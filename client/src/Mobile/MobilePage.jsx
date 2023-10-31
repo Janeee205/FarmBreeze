@@ -1,4 +1,5 @@
 import React from 'react';
+import './MobilePage.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './Page/MainPage';
 import KategoriePage from './Page/KategoriePage';
@@ -16,7 +17,7 @@ import PaymentPage from './Page/PaymentPage';
 const MobilePage = () => {
   return (
     <div>
-      <BrowerRouter>
+      <BrowserRouter>
         <Routes>
           <Route path='/' element={<MainPage/>}/>
           <Route path='Kategorie' element={<KategoriePage/>}/>
@@ -31,7 +32,7 @@ const MobilePage = () => {
           <Route path='Search' element={<SearchPage/>}/>
           <Route path='Payment' element={<PaymentPage/>}/>
         </Routes>
-      </BrowerRouter>
+      </BrowserRouter>
     </div>
   );
 };
