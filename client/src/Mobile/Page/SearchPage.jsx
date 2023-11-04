@@ -50,21 +50,21 @@ function SearchPage() {
         />
       </div>
       {searchQuery === '' && (
-        <div>
-          <div>
+        <div className='search-box'>
+          <div className='search-new'>
             <h2>최근 검색어</h2>
             <span>검색어 전체 삭제</span>
           </div>
-          <ul>
+          <ul className='search-new-item'>
             {/* {recentSearches.map((search) => (
               <li key={search.id}>{search.query}</li>
             ))} */}
             {recentSearches.slice(0, 10).map((search) => (
-              <li key={search.id}>{search.query}</li>
+              <li key={search.id}>{search.query}X</li>
             ))}
           </ul>
           <h2>추천 검색어</h2>
-          <ul>
+          <ul className='search-goat'>
             {/* {recommendedSearches.map((search) => (
               <li key={search.id}>{search.query}</li>
             ))} */}
@@ -73,19 +73,20 @@ function SearchPage() {
             ))}
           </ul>
           <h2>급상승 검색어</h2>
-          <ul>
+          <Icon icon="mingcute:question-fill" color="#005792" />
+          <ul className='search-up'>
             {/* {trendingSearches.map((search) => (
               <li key={search.id}>{search.query}</li>
             ))} */}
             {Array.from({ length: 5 }, (search, index) => (
-              <li key={index}>{trendingSearches[0].query}</li>
+              <li key={index}>{index+1}{'   '}{trendingSearches[index].query}</li>
             ))}
           </ul>
         </div>
       )}
       {searchResults.length > 0 && (
         <div>
-          <h2>검색 결과</h2>
+          {/* <h2>검색 결과</h2> */}
           <ul>
             {searchResults.map((result) => (
               <li key={result.id}>{result.title}</li>
