@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Icon } from '@iconify/react';
+import './SearchPage.css';
 // import TabBar from 'components/TabBar';
 
 function SearchPage() {
@@ -35,13 +37,18 @@ function SearchPage() {
   }, [searchQuery]);
 
   return (
-    <>
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        placeholder="검색어를 입력해주세요"
-      />
+    <div className='search-wrap'>
+      <div className='search-header'>
+        <div className='search-back'>
+          <Icon icon="maki:arrow" color="#005792" hFlip={true} />
+        </div>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="검색어를 입력해주세요"
+        />
+      </div>
       {searchQuery === '' && (
         <div>
           <div>
@@ -87,7 +94,7 @@ function SearchPage() {
         </div>
       )}
     {/* <TabBar/> */}
-    </>
+    </div>
   );
 }
 
