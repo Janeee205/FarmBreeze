@@ -1,7 +1,7 @@
 import React from 'react';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import TabBar from 'components/TabBar';
+// import TabBar from 'components/TabBar';
 
 function SearchPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -86,7 +86,7 @@ function SearchPage() {
           </ul>
         </div>
       )}
-    <TabBar/>
+    {/* <TabBar/> */}
     </>
   );
 }
