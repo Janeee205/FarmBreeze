@@ -17,8 +17,20 @@ p {
 input {
   flex-grow: 1;
   height: 34px;
+  font-size: 12px;
+  padding-left: 10px;
   border-radius: 3px;
   border: 1px solid #005792;
+}
+
+input:focus {
+  /* outline: 2px solid #d50000; */
+  outline: none;
+}
+
+::placeholder {
+  color: #5e9fc3;
+  opacity: 1; /* Firefox */
 }
 
 button {
@@ -27,14 +39,82 @@ button {
   margin-left: 5px;
   font-size: 10px;
   font-weight: bold;
-  color: #fff;
   border-radius: 3px;
   border: none;
-  background-color: #005792;
   cursor: pointer;
 }
 
 label {
   display: flex;
-  margin-bottom: 17px;
+  margin: 3px 0 17px;
+}
+
+.chk-btn {
+  color: #fff;
+  background-color: #005792;
+}
+
+/* 전화번호 */
+.phonenum,
+.address {
+  display: block;
+}
+
+.veri-btn,
+.veri-chk-btn {
+  color: #a1a1a1;
+  border: 1px solid #005792;
+}
+
+.phonenum-wrap {
+  margin-bottom: 3px;
+}
+.phonenum-wrap,
+.phonenum-veri {
+  display: flex;
+  width: 100%;
+}
+
+/* 주소 */
+.address input {
+  width: 100%;
+}
+
+#address {
+  margin-bottom: 3px;
+}
+
+/* 생년월일 */
+.birth input {
+  width: calc(100% / 3);
+}
+
+.birth input::placeholder {
+  text-align: center;
+}
+
+/* 성별 */
+.gender input {
+  width: calc((100% - 20px) / 3);
+  border: 1px solid red;
+}
+
+.gender input[type="radio"] {
+  display: none;
+}
+
+.gender .inputbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% / 3);
+  height: 34px;
+  border-radius: 3px;
+  border: 1px solid #005792;
+  cursor: pointer;
+}
+
+.gender .inputbox p {
+  font-size: 12px;
+  color: #005792;
 }
