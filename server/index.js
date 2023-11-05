@@ -69,16 +69,16 @@ router.use(passport.session());
 
 // cookieParser -------------------------------- 필요한지 확인 후 삭제 or 유지
 // npm install cookie-parser --save  ★ 설치 ★ --------- 아직 설치 안 함 
-const cookieParser = require('cookie-parser');
-app.use(cookieParser());
+// const cookieParser = require('cookie-parser');
+// app.use(cookieParser());
 
-app.get('/', function (requests, response) {
-  // Cookies that have not been signed 서명되지 않은 쿠키
-  console.log('Cookies: ', requests.cookies)
+// app.get('/', function (requests, response) {
+//   // Cookies that have not been signed 서명되지 않은 쿠키
+//   console.log('Cookies: ', requests.cookies)
 
-  // Cookies that have been signed 서명된 쿠키
-  console.log('Signed Cookies: ', requests.signedCookies)
-});
+//   // Cookies that have been signed 서명된 쿠키
+//   console.log('Signed Cookies: ', requests.signedCookies)
+// });
 
 // MongoDB 연결
 mongoose.connect('mongodb+srv://admin:ajt5gvmjbqkhOohE@data.reyvnoz.mongodb.net/?retryWrites=true&w=majority', {
