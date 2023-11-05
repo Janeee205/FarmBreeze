@@ -1,0 +1,40 @@
+.join-wrapper {
+  border: 1px solid gray;
+  min-height: 100vh;
+  padding: 0 15px;
+}
+
+.marking {
+  color: red;
+  font-weight: bold;
+  margin-left: 3px;
+}
+
+p {
+  color: #005792;
+}
+
+input {
+  flex-grow: 1;
+  height: 34px;
+  border-radius: 3px;
+  border: 1px solid #005792;
+}
+
+button {
+  width: 85px;
+  height: 34px;
+  margin-left: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 3px;
+  border: none;
+  background-color: #005792;
+  cursor: pointer;
+}
+
+label {
+  display: flex;
+  margin-bottom: 17px;
+}
