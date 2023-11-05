@@ -2,7 +2,7 @@ import React from 'react';
 import './MobilePage.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './Page/MainPage';
-import KategoriePage from './Page/KategoriePage';
+import CategoryPage from './Page/CategoryPage';
 import ProductDetailsPage from './Page/ProductDetailsPage';
 import JoinPage from './Page/JoinPage';
 import LoginPage from './Page/LoginPage';
@@ -20,7 +20,7 @@ const MobilePage = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<MainPage/>}/>
-          <Route path='Kategorie' element={<KategoriePage/>}/>
+          <Route path='Category' element={<CategoryPage/>}/>
           <Route path='ProductDetails' element={<ProductDetailsPage/>}/>
           <Route path='Join' element={<JoinPage/>}/>
           <Route path='Login' element={<LoginPage/>}/>
