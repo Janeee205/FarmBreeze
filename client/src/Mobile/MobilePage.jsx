@@ -16,24 +16,22 @@ import PaymentPage from './Page/PaymentPage';
 
 const MobilePage = () => {
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<MainPage/>}/>
-          <Route path='Category' element={<CategoryPage/>}/>
-          <Route path='ProductDetails' element={<ProductDetailsPage/>}/>
-          <Route path='Join' element={<JoinPage/>}/>
-          <Route path='Login' element={<LoginPage/>}/>
-          <Route path='Leave' element={<LeavePage/>}/>
-          <Route path='Cart' element={<CartPage/>}/>
-          <Route path='MyPage' element={<MyPage/>}/>
-          <Route path='MyInfo' element={<MyInfoPage/>}/>
-          <Route path='Like' element={<LikePage/>}/>
-          <Route path='Search' element={<SearchPage/>}/>
-          <Route path='Payment' element={<PaymentPage/>}/>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<MainPage/>}/>
+        <Route path='Category' element={<CategoryPage/>}/>
+        <Route path='ProductDetails' element={<ProductDetailsPage/>}/>
+        <Route path='Join' element={<JoinPage/>}/>
+        <Route path='Login' element={<LoginPage/>}/>
+        <Route path='Leave' element={<LeavePage/>}/>
+        <Route path='Cart' element={<CartPage/>}/>
+        <Route path='MyPage' element={<MyPage/>}/>
+        <Route path='MyInfo' element={<MyInfoPage/>}/>
+        <Route path='Like' element={<LikePage/>}/>
+        <Route path='Search' element={<SearchPage/>}/>
+        <Route path='Payment' element={<PaymentPage/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
