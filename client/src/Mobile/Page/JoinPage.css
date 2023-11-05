@@ -1,0 +1,203 @@
+.join-wrapper {
+  min-height: 100vh;
+}
+
+section {
+  padding: 0 15px;
+}
+
+.marking {
+  color: red;
+  font-weight: bold;
+  margin-left: 3px;
+}
+
+p {
+  color: #005792;
+}
+
+.join-form input {
+  flex-grow: 1;
+  height: 34px;
+  font-size: 12px;
+  padding-left: 10px;
+  border-radius: 3px;
+  border: 1px solid #005792;
+}
+
+input:focus {
+  /* outline: 2px solid #d50000; */
+  outline: none;
+}
+
+::placeholder {
+  color: #5e9fc3;
+  opacity: 1; /* Firefox */
+}
+
+button {
+  width: 85px;
+  height: 34px;
+  margin-left: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+
+label {
+  display: flex;
+  margin: 3px 0 20px;
+}
+
+.chk-btn {
+  color: #fff;
+  background-color: #005792;
+}
+
+/* 전화번호 */
+.phonenum,
+.address {
+  display: block;
+}
+
+.veri-btn,
+.veri-chk-btn {
+  color: #a1a1a1;
+  border: 1px solid #005792;
+}
+
+.phonenum-wrap {
+  margin-bottom: 3px;
+}
+.phonenum-wrap,
+.phonenum-veri {
+  display: flex;
+  width: 100%;
+}
+
+/* 주소 */
+.address input {
+  width: 100%;
+}
+
+#address {
+  margin-bottom: 3px;
+}
+
+/* 생년월일 */
+.birth,
+.gender {
+  display: flex;
+  gap: 4px;
+}
+.birth input {
+  width: calc(100% / 3);
+}
+
+.birth input::placeholder {
+  margin-left: 10px;
+  text-align: center;
+}
+
+/* 성별 */
+.gender input {
+  width: calc((100% - 20px) / 3);
+  border: 1px solid red;
+}
+
+.gender input[type="radio"] {
+  display: none;
+}
+
+.gender .inputbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% / 3);
+  height: 34px;
+  border-radius: 3px;
+  border: 1px solid #005792;
+  cursor: pointer;
+}
+
+.gender .inputbox p {
+  font-size: 12px;
+  color: #005792;
+}
+
+.gap {
+  width: 100%;
+  height: 10px;
+  margin-bottom: 15px;
+  background-color: #eeeeee;
+}
+/* 회원가입 폼 끝, 이용약관 동의 시작 */
+
+.terms-form label {
+  margin: 5px 0;
+}
+
+.terms-form span {
+  font-size: 10px;
+}
+
+.terms-form input[type="checkbox"] {
+  display: none;
+}
+
+.terms-form input[type="checkbox"] + label {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+  border: 1px solid #999999;
+}
+
+.terms-form input[type="checkbox"]:checked + label::after {
+  position: absolute;
+  content: "✔";
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: #999999;
+  text-align: center;
+  left: -1px;
+  top: -4px;
+}
+
+.total-agree {
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 10px;
+}
+
+.terms-form label {
+  display: flex;
+  align-items: center;
+}
+
+.total-agree-item .agree-text {
+  font-size: 12;
+  font-weight: bolder;
+  color: #005792;
+}
+
+.agree-item .agree-text {
+  font-size: 10px;
+  color: #005792;
+}
+
+.text-primary {
+  font-size: 10px;
+  margin-left: 3px;
+  color: #5e9fc3;
+}
+
+#join-btn {
+  width: 100%;
+  margin: 10px 0;
+  color: #fff;
+  background-color: #005792;
+}
