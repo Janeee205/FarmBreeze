@@ -1,12 +1,13 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
+import './CategoryPage.css';
 // import TabBar from 'components/TabBar';
 
-const KategoriePage = () => {
+const CategoryPage = () => {
   return (
     <div>
-      <div className='kategorie-header'>
-        <h2>전체 목록</h2>
+      <div className='Category-header'>
+        <h5>전체 목록</h5>
         <Icon icon="grommet-icons:cart" color="white" />
       </div>
       {/* <TabBar/> */}
@@ -14,4 +15,4 @@ const KategoriePage = () => {
   );
 };
 
-export default KategoriePage;
+export default CategoryPage;
