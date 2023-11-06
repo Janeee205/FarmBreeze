@@ -109,6 +109,7 @@ const JoinPage = () => {
                   <button type="button" className="veri-btn">
                     인증번호 받기
                   </button>
+                  <p className="warn"></p>
                 </div>
 
                 {/* 인증번호 받기 누른뒤 보이기 */}
