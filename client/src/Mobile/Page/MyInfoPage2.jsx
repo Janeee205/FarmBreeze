@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "../Component/Header";
 import "./MyInfoPage2.css";
 import { Icon } from "@iconify/react";
 
@@ -7,6 +8,7 @@ const MyInfoPage2 = () => {
   return (
     <>
       <div className="myinfopage2-wrapper">
+        <Header title="회원가입" />
         <form action="./submit.html" id="join-form">
           <section className="join-form">
             {/* 아이디 */}

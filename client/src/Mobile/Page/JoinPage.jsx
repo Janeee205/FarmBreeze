@@ -1,10 +1,12 @@
 import React from "react";
+import Header from "../Component/Header";
 import "./JoinPage.css";
 
 const JoinPage = () => {
   return (
     <>
       <div className="join-wrapper">
+        <Header title="회원가입" />
         <form action="./submit.html" id="join-form">
           <section className="join-form">
             {/* 아이디 */}

@@ -1,6 +1,11 @@
 .join-wrapper {
   min-height: 100vh;
 }
+
+.join-wrapper form {
+  margin-top: 2rem;
+}
+
 .join-wrapper section {
   padding: 0 1.5rem;
 }

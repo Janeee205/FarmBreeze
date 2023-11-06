@@ -1,6 +1,11 @@
 .myinfopage2-wrapper {
   min-height: 100vh;
 }
+
+.myinfopage2-wrapper form {
+  margin-top: 2rem;
+}
+
 .myinfopage2-wrapper section {
   padding: 0 1.5rem;
 }
