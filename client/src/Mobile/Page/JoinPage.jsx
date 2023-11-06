@@ -1,10 +1,12 @@
 import React from "react";
+import Header from "../Component/Header";
 import "./JoinPage.css";
 
 const JoinPage = () => {
   return (
     <>
       <div className="join-wrapper">
+        <Header title="회원가입" />
         <form action="./submit.html" id="join-form">
           <section className="join-form">
             {/* 아이디 */}
@@ -109,6 +111,7 @@ const JoinPage = () => {
                   <button type="button" className="veri-btn">
                     인증번호 받기
                   </button>
+                  <p className="warn"></p>
                 </div>
 
                 {/* 인증번호 받기 누른뒤 보이기 */}

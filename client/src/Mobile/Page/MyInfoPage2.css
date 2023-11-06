@@ -1,26 +1,26 @@
-.join-wrapper {
+.myinfopage2-wrapper {
   min-height: 100vh;
 }
 
-.join-wrapper form {
+.myinfopage2-wrapper form {
   margin-top: 2rem;
 }
 
-.join-wrapper section {
+.myinfopage2-wrapper section {
   padding: 0 1.5rem;
 }
 
-.join-wrapper .marking {
+.myinfopage2-wrapper .marking {
   color: red;
   font-weight: bold;
   margin-left: 0.3rem;
 }
 
-.join-wrapper p {
+.myinfopage2-wrapper p {
   color: var(--main-color);
 }
 
-.join-form input {
+.myinfopage2-wrapper .join-form input {
   flex-grow: 1;
   height: 3.4rem;
   font-size: 1.2rem;
@@ -29,17 +29,17 @@
   border: 1px solid var(--main-color);
 }
 
-.join-wrapper input:focus {
+.myinfopage2-wrapper input:focus {
   /* outline: 2px solid #d50000; */
   outline: none;
 }
 
-.join-wrapper ::placeholder {
+.myinfopage2-wrapper ::placeholder {
   color: #5e9fc3;
   opacity: 1; /* Firefox */
 }
 
-.join-wrapper button {
+.myinfopage2-wrapper button {
   width: 8.5rem;
   height: 3.4rem;
   margin-left: 0.5rem;
@@ -50,12 +50,12 @@
   cursor: pointer;
 }
 
-.join-wrapper label {
+.myinfopage2-wrapper label {
   display: flex;
   margin: 0.3rem 0 2.2rem;
 }
 
-.join-box-item {
+.myinfopage2-wrapper .join-box-item {
   position: relative;
 }
 
@@ -66,67 +66,68 @@
   bottom: -1.5rem;
 }
 
-.join-wrapper .chk-btn,
-.join-wrapper .veri-btn {
+.myinfopage2-wrapper .chk-btn,
+.myinfopage2-wrapper .veri-btn {
   color: #fff;
   background-color: var(--main-color);
 }
 
 /* 전화번호 */
-.join-wrapper .phonenum,
-.join-wrapper .address {
+.myinfopage2-wrapper .phonenum,
+.myinfopage2-wrapper .address {
   display: block;
 }
 
-.join-wrapper .veri-chk-btn {
+.myinfopage2-wrapper .veri-btn,
+.myinfopage2-wrapper .veri-chk-btn {
   color: #a1a1a1;
   border: 1px solid var(--main-color);
 }
 
-.join-wrapper .phonenum-wrap {
+.myinfopage2-wrapper .phonenum-wrap {
   margin-bottom: 0.3rem;
 }
-.join-wrapper .phonenum-wrap,
-.join-wrapper .phonenum-veri {
+.myinfopage2-wrapper .phonenum-wrap,
+.myinfopage2-wrapper .phonenum-veri {
   display: flex;
   width: 100%;
 }
 
 /* 주소 */
-.join-wrapper .address input {
+.myinfopage2-wrapper .address input {
   width: 100%;
 }
 
-.join-wrapper #address {
+.myinfopage2-wrapper #address {
   margin-bottom: 0.3rem;
 }
 
 /* 생년월일 */
-.join-wrapper .birth,
-.join-wrapper .gender {
+.myinfopage2-wrapper .birth,
+.myinfopage2-wrapper .gender {
   display: flex;
   gap: 0.4rem;
 }
-.join-wrapper .birth input {
+.myinfopage2-wrapper .birth input {
   width: calc(100% / 3);
 }
 
-.join-wrapper .birth input::placeholder {
+.myinfopage2-wrapper .birth input::placeholder {
   margin-left: 1rem;
   text-align: center;
 }
 
 /* 성별 */
-.join-wrapper .gender input {
+.myinfopage2-wrapper .gender input {
   width: calc((100% - 20px) / 3);
   border: 1px solid red;
 }
 
-.join-wrapper .gender input[type="radio"] {
+.myinfopage2-wrapper .gender input[type="radio"] {
   display: none;
 }
 
-.join-wrapper .gender .inputbox {
+.myinfopage2-wrapper .gender .inputbox {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -137,12 +138,12 @@
   cursor: pointer;
 }
 
-.join-wrapper .gender .inputbox p {
+.myinfopage2-wrapper .gender .inputbox p {
   font-size: 1.2rem;
   color: var(--main-color);
 }
 
-.join-wrapper .gap {
+.myinfopage2-wrapper .gap {
   width: 100%;
   height: 1rem;
   margin-bottom: 1.5rem;
@@ -150,19 +151,19 @@
 }
 /* 회원가입 폼 끝, 이용약관 동의 시작 */
 
-.terms-form label {
+.myinfopage2-wrapper .terms-form label {
   margin: 0.5rem 0;
 }
 
-.terms-form span {
+.myinfopage2-wrapper .terms-form span {
   font-size: 1rem;
 }
 
-.terms-form input[type="checkbox"] {
+.myinfopage2-wrapper .terms-form input[type="checkbox"] {
   display: none;
 }
 
-.terms-form input[type="checkbox"] + label {
+.myinfopage2-wrapper .terms-form input[type="checkbox"] + label {
   position: relative;
   display: inline-block;
   width: 1.8rem;
@@ -171,7 +172,7 @@
   border: 1px solid #999999;
 }
 
-.terms-form input[type="checkbox"]:checked + label::after {
+.myinfopage2-wrapper .terms-form input[type="checkbox"]:checked + label::after {
   position: absolute;
   content: "✔";
   font-size: 1.8rem;
@@ -183,23 +184,23 @@
   line-height: 1.6rem;
 }
 
-.total-agree {
+.myinfopage2-wrapper .total-agree {
   border-bottom: 1px solid #eeeeee;
   padding-bottom: 1rem;
 }
 
-.terms-form label {
+.myinfopage2-wrapper .terms-form label {
   display: flex;
   align-items: center;
 }
 
-.total-agree-item .agree-text {
+.myinfopage2-wrapper .total-agree-item .agree-text {
   font-size: 12;
   font-weight: bolder;
   color: var(--main-color);
 }
 
-.agree-item .agree-text {
+.myinfopage2-wrapper .agree-item .agree-text {
   font-size: 1rem;
   color: var(--main-color);
 }
@@ -210,8 +211,17 @@
   color: #5e9fc3;
 }
 
+.withdraw {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.withdraw .chevron {
+  font-size: 1.2rem;
+}
 /* submit 버튼 */
-#join-btn {
+.myinfopage2-wrapper #join-btn {
   width: 100%;
   margin: 1rem 0;
   color: #fff;
