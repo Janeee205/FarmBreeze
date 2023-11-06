@@ -130,6 +130,7 @@ function SearchPage() {
       )}
       {searchResults.length > 0 && (
         <div className='search-results'>
+          {/* 작동을 안 하는 부분 */}
           <div className='search-header'>
             <div className='search-back'>
               <Icon icon="maki:arrow" color="#005792" hFlip={true} />
@@ -146,6 +147,7 @@ function SearchPage() {
             <span className='search-cart-count'>1</span>
             <Icon className='search-cart' icon="ion:cart-outline" color="#5e9fc3" height='30px' />
           </div>
+          {/* 스타일링 안 되는 이유를 찾아야 함 */}
           <ul>
             {searchResults.map((result) => (
               <li key={result.id}>{result.title}</li>

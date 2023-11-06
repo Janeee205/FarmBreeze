@@ -116,6 +116,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border: 1px solid red;
 }
 .search-results .search-back {
   font-size: large;
