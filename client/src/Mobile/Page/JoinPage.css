@@ -61,7 +61,8 @@
   bottom: -1.5rem;
 }
 
-.join-wrapper .chk-btn {
+.join-wrapper .chk-btn,
+.join-wrapper .veri-btn {
   color: #fff;
   background-color: #005792;
 }
@@ -72,7 +73,6 @@
   display: block;
 }
 
-.join-wrapper .veri-btn,
 .join-wrapper .veri-chk-btn {
   color: #a1a1a1;
   border: 1px solid #005792;
