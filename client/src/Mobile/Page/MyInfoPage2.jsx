@@ -106,6 +106,7 @@ const MyInfoPage2 = () => {
                   <button type="button" className="veri-btn">
                     인증번호 받기
                   </button>
+                  <p className="warn"></p>
                 </div>
 
                 {/* 인증번호 받기 누른뒤 보이기 */}
@@ -172,7 +173,6 @@ const MyInfoPage2 = () => {
             <p className="label-name">
               약관 및 마케팅 수신동의<span className="marking">*</span>
             </p>
-
             <div className="agree-list">
               <label className="agree-item">
                 <input type="checkbox" id="terms-chkbox2" />
@@ -193,8 +193,10 @@ const MyInfoPage2 = () => {
                 <span className="text-primary">(선택)</span>
               </label>
             </div>
-            <span>탈퇴하기</span>
-            <Icon icon="ion:chevron-up" rotate={1} className="chevron" />
+            <div className="withdraw">
+              <span>탈퇴하기</span>
+              <Icon icon="ion:chevron-up" rotate={1} className="chevron" />
+            </div>
             <button type="submit" id="join-btn">
               가입하기
             </button>

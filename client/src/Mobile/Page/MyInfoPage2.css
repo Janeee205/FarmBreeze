@@ -12,7 +12,7 @@
 }
 
 .myinfopage2-wrapper p {
-  color: #005792;
+  color: var(--main-color);
 }
 
 .myinfopage2-wrapper .join-form input {
@@ -21,7 +21,7 @@
   font-size: 1.2rem;
   padding-left: 1rem;
   border-radius: 0.3rem;
-  border: 1px solid #005792;
+  border: 1px solid var(--main-color);
 }
 
 .myinfopage2-wrapper input:focus {
@@ -61,9 +61,10 @@
   bottom: -1.5rem;
 }
 
-.myinfopage2-wrapper .chk-btn {
+.myinfopage2-wrapper .chk-btn,
+.myinfopage2-wrapper .veri-btn {
   color: #fff;
-  background-color: #005792;
+  background-color: var(--main-color);
 }
 
 /* 전화번호 */
@@ -75,7 +76,7 @@
 .myinfopage2-wrapper .veri-btn,
 .myinfopage2-wrapper .veri-chk-btn {
   color: #a1a1a1;
-  border: 1px solid #005792;
+  border: 1px solid var(--main-color);
 }
 
 .myinfopage2-wrapper .phonenum-wrap {
@@ -128,13 +129,13 @@
   width: calc(100% / 3);
   height: 3.4rem;
   border-radius: 0.3rem;
-  border: 1px solid #005792;
+  border: 1px solid var(--main-color);
   cursor: pointer;
 }
 
 .myinfopage2-wrapper .gender .inputbox p {
   font-size: 1.2rem;
-  color: #005792;
+  color: var(--main-color);
 }
 
 .myinfopage2-wrapper .gap {
@@ -172,10 +173,10 @@
   font-size: 1.8rem;
   width: 1.8rem;
   height: 1.8rem;
-  color: #999999;
+  color: #fff;
+  background-color: var(--main-color);
   text-align: center;
-  left: -0.1rem;
-  top: -0.4rem;
+  line-height: 1.6rem;
 }
 
 .myinfopage2-wrapper .total-agree {
@@ -191,12 +192,12 @@
 .myinfopage2-wrapper .total-agree-item .agree-text {
   font-size: 12;
   font-weight: bolder;
-  color: #005792;
+  color: var(--main-color);
 }
 
 .myinfopage2-wrapper .agree-item .agree-text {
   font-size: 1rem;
-  color: #005792;
+  color: var(--main-color);
 }
 
 .text-primary {
@@ -205,13 +206,19 @@
   color: #5e9fc3;
 }
 
-.chevron {
-  font-size: 10rem;
+.withdraw {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.withdraw .chevron {
+  font-size: 1.2rem;
 }
 /* submit 버튼 */
 .myinfopage2-wrapper #join-btn {
   width: 100%;
   margin: 1rem 0;
   color: #fff;
-  background-color: #005792;
+  background-color: var(--main-color);
 }
