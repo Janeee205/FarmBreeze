@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Icon } from '@iconify/react';
 import './SearchPage.css';
+import { Link } from 'react-router-dom';
 // import TabBar from 'components/TabBar';
 
 function SearchPage() {
