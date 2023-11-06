@@ -80,7 +80,7 @@ function SearchPage() {
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="　　검색어를 입력해주세요"
+          placeholder="검색어를 입력해주세요"
         />
       </div>
       {searchQuery === '' && (
@@ -129,8 +129,23 @@ function SearchPage() {
         </div>
       )}
       {searchResults.length > 0 && (
-        <div>
-          {/* <h2>검색 결과</h2> */}
+        <div className='search-results'>
+          <div className='search-header'>
+            <div className='search-back'>
+              <Icon icon="maki:arrow" color="#005792" hFlip={true} />
+            </div>
+            <Icon className='search-icon' icon="material-symbols:search" color="#5e9fc3" height='26px' />
+            <input
+              className='search-result-input'
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="검색어를 입력해주세요"
+            />
+            <Icon className='search-close' icon="octicon:x-12" color="#5e9fc3" height='26px' />
+            <span className='search-cart-count'>1</span>
+            <Icon className='search-cart' icon="ion:cart-outline" color="#5e9fc3" height='30px' />
+          </div>
           <ul>
             {searchResults.map((result) => (
               <li key={result.id}>{result.title}</li>

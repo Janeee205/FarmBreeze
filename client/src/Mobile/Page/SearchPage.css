@@ -26,6 +26,7 @@
   width: 86%;
   height: 35px;
   padding: 10px;
+  padding-left: 30px;
   margin: 10px 0;
   font-size: 12px;
   border: 1px solid #005792;
@@ -106,4 +107,41 @@
 .numbered-item {
   font-weight: 700;
   color: #005792;
+}
+
+
+/* 검색 결과 */
+.search-results .search-header {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.search-results .search-back {
+  font-size: large;
+  font-weight: 700;
+}
+.search-results .search-icon {
+  position: absolute;
+  left: 12.5%;
+}
+.search-results input[type="text"] {
+  width: 78%;
+  height: 35px;
+  padding: 10px;
+  padding-left: 30px;
+  margin: 10px 0;
+  font-size: 12px;
+  border: 1px solid #005792;
+  border-radius: 5px;
+}
+
+.search-close {
+  z-index: 10;
+}
+.search-cart-count {
+  z-index: 10;
+}
+.search-cart {
+  z-index: 10;
 }
