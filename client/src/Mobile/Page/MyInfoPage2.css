@@ -1,0 +1,217 @@
+.myinfopage2-wrapper {
+  min-height: 100vh;
+}
+.myinfopage2-wrapper section {
+  padding: 0 1.5rem;
+}
+
+.myinfopage2-wrapper .marking {
+  color: red;
+  font-weight: bold;
+  margin-left: 0.3rem;
+}
+
+.myinfopage2-wrapper p {
+  color: #005792;
+}
+
+.myinfopage2-wrapper .join-form input {
+  flex-grow: 1;
+  height: 3.4rem;
+  font-size: 1.2rem;
+  padding-left: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid #005792;
+}
+
+.myinfopage2-wrapper input:focus {
+  /* outline: 2px solid #d50000; */
+  outline: none;
+}
+
+.myinfopage2-wrapper ::placeholder {
+  color: #5e9fc3;
+  opacity: 1; /* Firefox */
+}
+
+.myinfopage2-wrapper button {
+  width: 8.5rem;
+  height: 3.4rem;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+}
+
+.myinfopage2-wrapper label {
+  display: flex;
+  margin: 0.3rem 0 2.2rem;
+}
+
+.myinfopage2-wrapper .join-box-item {
+  position: relative;
+}
+
+/* 잘못 입력할시 경고문 */
+.join-box-item .warn {
+  position: absolute;
+  color: red;
+  bottom: -1.5rem;
+}
+
+.myinfopage2-wrapper .chk-btn {
+  color: #fff;
+  background-color: #005792;
+}
+
+/* 전화번호 */
+.myinfopage2-wrapper .phonenum,
+.myinfopage2-wrapper .address {
+  display: block;
+}
+
+.myinfopage2-wrapper .veri-btn,
+.myinfopage2-wrapper .veri-chk-btn {
+  color: #a1a1a1;
+  border: 1px solid #005792;
+}
+
+.myinfopage2-wrapper .phonenum-wrap {
+  margin-bottom: 0.3rem;
+}
+.myinfopage2-wrapper .phonenum-wrap,
+.myinfopage2-wrapper .phonenum-veri {
+  display: flex;
+  width: 100%;
+}
+
+/* 주소 */
+.myinfopage2-wrapper .address input {
+  width: 100%;
+}
+
+.myinfopage2-wrapper #address {
+  margin-bottom: 0.3rem;
+}
+
+/* 생년월일 */
+.myinfopage2-wrapper .birth,
+.myinfopage2-wrapper .gender {
+  display: flex;
+  gap: 0.4rem;
+}
+.myinfopage2-wrapper .birth input {
+  width: calc(100% / 3);
+}
+
+.myinfopage2-wrapper .birth input::placeholder {
+  margin-left: 1rem;
+  text-align: center;
+}
+
+/* 성별 */
+.myinfopage2-wrapper .gender input {
+  width: calc((100% - 20px) / 3);
+  border: 1px solid red;
+}
+
+.myinfopage2-wrapper .gender input[type="radio"] {
+  display: none;
+}
+
+.myinfopage2-wrapper .gender .inputbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% / 3);
+  height: 3.4rem;
+  border-radius: 0.3rem;
+  border: 1px solid #005792;
+  cursor: pointer;
+}
+
+.myinfopage2-wrapper .gender .inputbox p {
+  font-size: 1.2rem;
+  color: #005792;
+}
+
+.myinfopage2-wrapper .gap {
+  width: 100%;
+  height: 1rem;
+  margin-bottom: 1.5rem;
+  background-color: #eeeeee;
+}
+/* 회원가입 폼 끝, 이용약관 동의 시작 */
+
+.myinfopage2-wrapper .terms-form label {
+  margin: 0.5rem 0;
+}
+
+.myinfopage2-wrapper .terms-form span {
+  font-size: 1rem;
+}
+
+.myinfopage2-wrapper .terms-form input[type="checkbox"] {
+  display: none;
+}
+
+.myinfopage2-wrapper .terms-form input[type="checkbox"] + label {
+  position: relative;
+  display: inline-block;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-right: 0.5rem;
+  border: 1px solid #999999;
+}
+
+.myinfopage2-wrapper .terms-form input[type="checkbox"]:checked + label::after {
+  position: absolute;
+  content: "✔";
+  font-size: 1.8rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  color: #999999;
+  text-align: center;
+  left: -0.1rem;
+  top: -0.4rem;
+}
+
+.myinfopage2-wrapper .total-agree {
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 1rem;
+}
+
+.myinfopage2-wrapper .terms-form label {
+  display: flex;
+  align-items: center;
+}
+
+.myinfopage2-wrapper .total-agree-item .agree-text {
+  font-size: 12;
+  font-weight: bolder;
+  color: #005792;
+}
+
+.myinfopage2-wrapper .agree-item .agree-text {
+  font-size: 1rem;
+  color: #005792;
+}
+
+.text-primary {
+  font-size: 1rem;
+  margin-left: 0.3rem;
+  color: #5e9fc3;
+}
+
+.chevron {
+  font-size: 10rem;
+}
+/* submit 버튼 */
+.myinfopage2-wrapper #join-btn {
+  width: 100%;
+  margin: 1rem 0;
+  color: #fff;
+  background-color: #005792;
+}
