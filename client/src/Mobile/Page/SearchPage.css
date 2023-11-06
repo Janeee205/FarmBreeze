@@ -16,7 +16,7 @@
 }
 
 /* 검색 입력 필드 스타일 */
-input[type="text"] {
+.search-wrap input[type="text"] {
   width: 80%;
   height: 35px;
   padding: 10px;
@@ -42,14 +42,14 @@ input[type="text"] {
 }
 .search-new-item li {
   color: #005792;
-  background-color: #5E9FC3;
+  background-color: #5e9fc3;
   border-radius: 20px;
 }
 
 /* 추천 검색어 */
 .seacrh-goat li {
-  color: #D0ECFF;
-  border: 1px solid #5E9FC3;
+  color: #d0ecff;
+  border: 1px solid #5e9fc3;
   border-radius: 20px;
 }
 
