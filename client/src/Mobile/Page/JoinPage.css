@@ -12,7 +12,7 @@
 }
 
 .join-wrapper p {
-  color: #005792;
+  color: var(--main-color);
 }
 
 .join-form input {
@@ -21,7 +21,7 @@
   font-size: 1.2rem;
   padding-left: 1rem;
   border-radius: 0.3rem;
-  border: 1px solid #005792;
+  border: 1px solid var(--main-color);
 }
 
 .join-wrapper input:focus {
@@ -64,7 +64,7 @@
 .join-wrapper .chk-btn,
 .join-wrapper .veri-btn {
   color: #fff;
-  background-color: #005792;
+  background-color: var(--main-color);
 }
 
 /* 전화번호 */
@@ -75,7 +75,7 @@
 
 .join-wrapper .veri-chk-btn {
   color: #a1a1a1;
-  border: 1px solid #005792;
+  border: 1px solid var(--main-color);
 }
 
 .join-wrapper .phonenum-wrap {
@@ -128,13 +128,13 @@
   width: calc(100% / 3);
   height: 3.4rem;
   border-radius: 0.3rem;
-  border: 1px solid #005792;
+  border: 1px solid var(--main-color);
   cursor: pointer;
 }
 
 .join-wrapper .gender .inputbox p {
   font-size: 1.2rem;
-  color: #005792;
+  color: var(--main-color);
 }
 
 .join-wrapper .gap {
@@ -172,10 +172,10 @@
   font-size: 1.8rem;
   width: 1.8rem;
   height: 1.8rem;
-  color: #999999;
+  color: #fff;
+  background-color: var(--main-color);
   text-align: center;
-  left: -0.1rem;
-  top: -0.4rem;
+  line-height: 2rem;
 }
 
 .total-agree {
@@ -191,12 +191,12 @@
 .total-agree-item .agree-text {
   font-size: 12;
   font-weight: bolder;
-  color: #005792;
+  color: var(--main-color);
 }
 
 .agree-item .agree-text {
   font-size: 1rem;
-  color: #005792;
+  color: var(--main-color);
 }
 
 .text-primary {
@@ -210,5 +210,5 @@
   width: 100%;
   margin: 1rem 0;
   color: #fff;
-  background-color: #005792;
+  background-color: var(--main-color);
 }
