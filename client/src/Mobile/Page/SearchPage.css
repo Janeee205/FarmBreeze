@@ -1,5 +1,3 @@
-/* 이 CSS 파일은 SearchPage 컴포넌트에 적용됩니다 */
-
 /* 전체 페이지 스타일 */
 .search-wrap {
   padding: 10px;
@@ -7,7 +5,10 @@
 
 /* 헤더 */
 .search-header {
+  position: relative;
   display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .search-back {
@@ -15,20 +16,29 @@
   font-weight: 700;
 }
 
+.search-icon {
+  position: absolute;
+  left: 12.5%;
+}
+
 /* 검색 입력 필드 스타일 */
 .search-wrap input[type="text"] {
-  width: 80%;
+  width: 86%;
   height: 35px;
   padding: 10px;
   margin: 10px 0;
-  font-size: 16px;
+  font-size: 12px;
   border: 1px solid #005792;
   border-radius: 5px;
 }
 
+
 /* 최근 검색어, 추천 검색어, 급상승 검색어 컨테이너 스타일 */
+.search-box {
+  padding: 5px;
+}
 .search-box h2 {
-  font-size: 18px;
+  margin-top: 40px;
   font-weight: 700;
 }
 
@@ -36,25 +46,64 @@
 .search-new {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .search-new span {
+  margin-top: 40px;
+  font-weight: 700;
   text-decoration: underline;
+  color: #5e9fc3;
+}
+.search-new-item {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
 }
 .search-new-item li {
+  margin-left: 10px;
+  padding: 5px 8px;
   color: #005792;
-  background-color: #5e9fc3;
+  border: 1px solid #5e9fc3;
   border-radius: 20px;
+  background-color: #fff;
+}
+.search-new-item li:first-child {
+  margin-left: 0;
 }
 
 /* 추천 검색어 */
+.search-goat {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
 .search-goat li {
-  color: #d0ecff;
-  border: 1px solid #5e9fc3;
+  margin-left: 1rem;
+  padding: 5px 8px;
+  font-weight: bolder;
+  color: #5e9fc3;
   border-radius: 20px;
+  background-color: #d0ecff;
+}
+.search-goat li:first-child {
+  margin-left: 0;
 }
 
 /* 급상승 검색어 */
-.search-up li {
-  border-bottom: 1px solid #888; /* 선의 스타일 및 색상을 원하는 대로 조정하세요 */
-  margin-bottom: 5px; /* 필요한 여백을 조정하세요 */
+.search-up {
+  display: flex;
+  align-items: center;
+}
+.search-up-icon {
+  margin-top: 40px;
+}
+.search-up-item li {
+  margin-top: 2rem;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ddddddbd;
+  color: black;
+}
+.numbered-item {
+  font-weight: 700;
+  color: #005792;
 }
