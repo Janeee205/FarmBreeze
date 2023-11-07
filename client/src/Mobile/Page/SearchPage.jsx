@@ -56,18 +56,35 @@ function SearchPage() {
   //   });
   // }, []);
 
-  // // 검색어 입력 시 검색 결과 가져오기
-  // useEffect(() => {
-  //   if (searchQuery) {
-  //     // 서버에서 검색 결과 가져오기
-  //     axios.get(`/api/search?query=${searchQuery}`).then((response) => {
-  //       setSearchResults(response.data.results);
-  //     });
-  //   } else {
-  //     // 검색어가 없을 때 초기 데이터로 재설정
-  //     setSearchResults([]);
-  //   }
-  // }, [searchQuery]);
+  // 검색어 입력 시 검색 결과 가져오기
+  useEffect(() => {
+    if (searchQuery) {
+      // 서버에서 검색 결과 가져오기
+      // axios.get(`/api/search?query=${searchQuery}`).then((response) => {
+      //   setSearchResults(response.data.results);
+      // });
+      setSearchResults([
+        { id: 1, title: 'Search Result 1' },
+        { id: 2, title: 'Search Result 2' },
+      ]);
+    } else {
+      // 검색어가 없을 때 초기 데이터로 재설정
+      setSearchResults([]);
+    }
+  }, [searchQuery]);
+
+  // 검색어 삭제 이벤트 핸들러
+  const handleClearSearch = () => {
+    setSearchQuery(''); // 검색어를 빈 문자열로 설정하여 삭제
+  };
+
+  // 최근 검색어 전체 삭제 이벤트 핸들러
+  const handleClearRecentSearches = () => {
+    setRecentSearches([]); // 최근 검색어 목록을 빈 배열로 설정하여 삭제
+  };
+
+  const inputClassName = searchResults.length > 0 ? 'active' : '';
+
 
   return (
     <div className='search-wrap'>
@@ -81,13 +98,14 @@ function SearchPage() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="검색어를 입력해주세요"
+          className={inputClassName}
         />
       </div>
       {searchQuery === '' && (
         <div className='search-box'>
           <div className='search-new'>
             <h2>최근 검색어</h2>
-            <span>검색어 전체 삭제</span>
+            <span onClick={handleClearRecentSearches}>검색어 전체 삭제</span>
           </div>
           <ul className='search-new-item'>
             {/* {recentSearches.map((search) => (
@@ -130,24 +148,11 @@ function SearchPage() {
       )}
       {searchResults.length > 0 && (
         <div className='search-results'>
-          {/* 작동을 안 하는 부분 */}
-          <div className='search-header'>
-            <div className='search-back'>
-              <Icon icon="maki:arrow" color="#005792" hFlip={true} />
-            </div>
-            <Icon className='search-icon' icon="material-symbols:search" color="#5e9fc3" height='26px' />
-            <input
-              className='search-result-input'
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="검색어를 입력해주세요"
-            />
-            <Icon className='search-close' icon="octicon:x-12" color="#5e9fc3" height='26px' />
-            <span className='search-cart-count'>1</span>
-            <Icon className='search-cart' icon="ion:cart-outline" color="#5e9fc3" height='30px' />
+          <Icon className='search-close' icon="octicon:x-12" color="#5e9fc3" height='20px' onClick={handleClearSearch} />
+          <div className='search-cart-wrap'>
+            <span className='search-cart-count'>3</span>
+            <Icon className='search-cart' icon="ion:cart-outline" color="#005792" height='30px' />
           </div>
-          {/* 스타일링 안 되는 이유를 찾아야 함 */}
           <ul>
             {searchResults.map((result) => (
               <li key={result.id}>{result.title}</li>
