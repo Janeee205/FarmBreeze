@@ -1,0 +1,46 @@
+.tab-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  z-index: 100;
+  background-color: #fff;
+}
+
+.tab-bar-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.tab-bar-item a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  color: #888;
+}
+
+.tab-bar-item p {
+  color: #888;
+}
+
+/* 활성화 메뉴 */
+.is-active.tab-bar-item a {
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+.is-active.tab-bar-item p {
+  color: var(--main-color);
+}
