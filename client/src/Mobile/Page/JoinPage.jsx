@@ -4,6 +4,10 @@ import "./JoinPage.css";
 
 const JoinPage = () => {
   return (
+    // 할 일 :
+    // 버튼 작업하기
+    // 스타일 바꾸기
+
     <>
       <div className="join-wrapper">
         <Header title="회원가입" />

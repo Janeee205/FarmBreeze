@@ -26,11 +26,11 @@
   font-size: 1.2rem;
   padding-left: 1rem;
   border-radius: 0.3rem;
-  border: 1px solid var(--main-color);
+  border: 1px solid #5e9fc3;
 }
 
 .join-wrapper input:focus {
-  /* outline: 2px solid #d50000; */
+  border: 1px solid var(--main-color);
   outline: none;
 }
 

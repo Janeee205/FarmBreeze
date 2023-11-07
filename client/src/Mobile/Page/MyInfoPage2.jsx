@@ -9,7 +9,7 @@ const MyInfoPage2 = () => {
   return (
     <>
       <div className="myinfopage2-wrapper">
-        <Header title="회원가입" />
+        <Header title="마이페이지" />
         <form action="./submit.html" id="join-form">
           <section className="join-form">
             {/* 아이디 */}
