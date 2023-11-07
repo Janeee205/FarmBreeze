@@ -137,9 +137,12 @@
   cursor: pointer;
 }
 
+.join-wrapper .gender .inputbox:checked {
+  background-color: var(--main-color);
+}
+
 .join-wrapper .gender .inputbox p {
   font-size: 1.2rem;
-  color: var(--main-color);
 }
 
 .join-wrapper .gap {
@@ -148,6 +151,15 @@
   margin-bottom: 1.5rem;
   background-color: #eeeeee;
 }
+
+.join-wrapper .btn-primary {
+  background-color: var(--main-color);
+}
+
+.join-wrapper .btn-primary p {
+  color: #fff;
+}
+
 /* 회원가입 폼 끝, 이용약관 동의 시작 */
 
 .terms-form label {
@@ -191,6 +203,7 @@
 .terms-form label {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .total-agree-item .agree-text {

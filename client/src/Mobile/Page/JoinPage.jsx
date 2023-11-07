@@ -38,6 +38,7 @@ const JoinPage = () => {
                   type="password"
                   name="pw"
                   id="pw"
+                  autoComplete="off"
                   placeholder="비밀번호를 입력해 주세요."
                 />
               </label>
@@ -54,7 +55,8 @@ const JoinPage = () => {
                   type="password"
                   name="pw-chk"
                   id="pw-chk"
-                  placeholder="비밀번호를 입력해 주세요."
+                  autoComplete="off"
+                  placeholder="비밀번호를 다시 입력해 주세요."
                 />
               </label>
               <p className="warn"></p>
@@ -171,23 +173,23 @@ const JoinPage = () => {
             <div className="join-box-item join-gender">
               <p className="label-name">성별</p>
               <label htmlFor="gender" className="gender">
-                <div className="inputbox">
+                <div className="inputbox btn-primary">
                   <p>남자</p>
                   <input
                     type="radio"
                     name="gender"
-                    id="male"
                     value="0"
-                    checked
+                    id="male"
+                    defaultChecked
                   />
                 </div>
                 <div className="inputbox">
                   <p>여자</p>
-                  <input type="radio" name="gender" id="female" value="1" />
+                  <input type="radio" name="gender" value="1" id="female" />
                 </div>
                 <div className="inputbox">
                   <p>선택안함</p>
-                  <input type="radio" name="gender" id="no-gender" value="2" />
+                  <input type="radio" name="gender" value="2" id="no-gender" />
                 </div>
               </label>
             </div>

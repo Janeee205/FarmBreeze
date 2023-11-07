@@ -34,6 +34,11 @@
   outline: none;
 }
 
+.myinfopage2-wrapper input:disabled {
+  background-color: #d3dce1;
+  border: none;
+}
+
 .myinfopage2-wrapper ::placeholder {
   color: #5e9fc3;
   opacity: 1; /* Firefox */
@@ -78,7 +83,6 @@
   display: block;
 }
 
-.myinfopage2-wrapper .veri-btn,
 .myinfopage2-wrapper .veri-chk-btn {
   color: #a1a1a1;
   border: 1px solid var(--main-color);
@@ -140,7 +144,6 @@
 
 .myinfopage2-wrapper .gender .inputbox p {
   font-size: 1.2rem;
-  color: var(--main-color);
 }
 
 .myinfopage2-wrapper .gap {
@@ -149,10 +152,20 @@
   margin-bottom: 1.5rem;
   background-color: #eeeeee;
 }
+
+.myinfopage2-wrapper .btn-primary {
+  background-color: var(--main-color);
+}
+
+.myinfopage2-wrapper .btn-primary p {
+  color: #fff;
+}
+
 /* 회원가입 폼 끝, 이용약관 동의 시작 */
 
 .myinfopage2-wrapper .terms-form label {
   margin: 0.5rem 0;
+  cursor: pointer;
 }
 
 .myinfopage2-wrapper .terms-form span {
