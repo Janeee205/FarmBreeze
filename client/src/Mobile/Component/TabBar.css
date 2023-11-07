@@ -8,6 +8,8 @@
   width: 100%;
   max-width: 480px;
   margin: 0 auto;
+  z-index: 100;
+  background-color: #fff;
 }
 
 .tab-bar-item {
