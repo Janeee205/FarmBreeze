@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 // import axios from 'axios';
 import { Icon } from '@iconify/react';
 import './SearchPage.css';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import TabBar from '../Component/TabBar.jsx';
 
 function SearchPage() {
@@ -149,10 +149,10 @@ function SearchPage() {
       {searchResults.length > 0 && (
         <div className='search-results'>
           <Icon className='search-close' icon="octicon:x-12" color="#5e9fc3" height='20px' onClick={handleClearSearch} />
-          <div className='search-cart-wrap'>
+          <Link to="/Cart">
             <span className='search-cart-count'>3</span>
             <Icon className='search-cart' icon="ion:cart-outline" color="#005792" height='30px' />
-          </div>
+          </Link>
           <ul>
             {searchResults.map((result) => (
               <li key={result.id}>{result.title}</li>
