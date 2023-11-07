@@ -1,11 +1,13 @@
 import React from "react";
 import Header from "../Component/Header";
-import "./JoinPage.css";
+import "./MyInfoPage2.css";
+import { Icon } from "@iconify/react";
 
-const JoinPage = () => {
+const MyInfoPage2 = () => {
+  // 비밀번호 입력후 나오는 내정보관리 페이지
   return (
     <>
-      <div className="join-wrapper">
+      <div className="myinfopage2-wrapper">
         <Header title="회원가입" />
         <form action="./submit.html" id="join-form">
           <section className="join-form">
@@ -15,12 +17,7 @@ const JoinPage = () => {
                 아이디<span className="marking">*</span>
               </p>
               <label htmlFor="id">
-                <input
-                  type="text"
-                  name="id"
-                  id="id"
-                  placeholder="아이디를 입력해 주세요."
-                />
+                <input type="text" name="id" id="id" />
                 <button type="button" className="id-chk-btn chk-btn">
                   중복확인
                 </button>
@@ -125,27 +122,6 @@ const JoinPage = () => {
               <p className="warn"></p>
             </div>
 
-            {/* 주소 */}
-            <div className="join-box-item join-address">
-              <p className="label-name">
-                주소<span className="marking">*</span>
-              </p>
-              <label htmlFor="address" className="address">
-                <input
-                  type="text"
-                  name="address"
-                  id="address"
-                  placeholder="도로명, 지번, 건물명 검색"
-                />
-                <input
-                  type="text"
-                  name="address-detail"
-                  id="address-detail"
-                  placeholder="상세주소"
-                />
-              </label>
-            </div>
-
             {/* 생년월일 */}
             <div className="join-box-item join-birth">
               <p className="label-name">생년월일</p>
@@ -197,46 +173,31 @@ const JoinPage = () => {
 
           <section className="terms-form">
             <p className="label-name">
-              이용약관동의<span className="marking">*</span>
+              약관 및 마케팅 수신동의<span className="marking">*</span>
             </p>
-
-            <div className="total-agree">
-              <label className="total-agree-item" htmlFor="total-agree-chkbox">
-                <input type="checkbox" id="total-agree-chkbox" />
-                <label htmlFor="total-agree-chkbox"></label>
-                <span className="agree-text">전체 동의합니다.</span>
-              </label>
-              <p>
-                선택항목에 동의하지 않은 경우도 회원가입 및 일반적인 서비스를
-                이용할 수 있습니다.
-              </p>
-            </div>
-
             <div className="agree-list">
               <label className="agree-item">
-                <input type="checkbox" id="terms-chkbox1" />
-                <label htmlFor="terms-chkbox1"></label>
-                <span className="agree-text">이용약관 동의</span>
-                <span className="text-primary">(필수)</span>
-              </label>
-              <label className="agree-item">
                 <input type="checkbox" id="terms-chkbox2" />
-                <label htmlFor="terms-chkbox2"></label>
-                <span className="agree-text">개인정보 수집 ˑ 이용 동의</span>
-                <span className="text-primary">(필수)</span>
+                <label htmlFor="terms-chkbox1"></label>
+                <span className="agree-text">개인정보 수집 이용 동의</span>
+                <span className="text-primary">(선택)</span>
               </label>
               <label className="agree-item">
                 <input type="checkbox" id="terms-chkbox3" />
-                <label htmlFor="terms-chkbox3"></label>
-                <span className="agree-text">개인정보 수집 ˑ 이용 동의</span>
+                <label htmlFor="terms-chkbox2"></label>
+                <span className="agree-text">마케팅 이메일 수신</span>
                 <span className="text-primary">(선택)</span>
               </label>
               <label className="agree-item">
                 <input type="checkbox" id="terms-chkbox4" />
-                <label htmlFor="terms-chkbox4"></label>
-                <span className="agree-text">본인은 만 14세 이상입니다.</span>
-                <span className="text-primary">(필수)</span>
+                <label htmlFor="terms-chkbox3"></label>
+                <span className="agree-text">마케팅 SNS 수신</span>
+                <span className="text-primary">(선택)</span>
               </label>
+            </div>
+            <div className="withdraw">
+              <span>탈퇴하기</span>
+              <Icon icon="ion:chevron-up" rotate={1} className="chevron" />
             </div>
             <button type="submit" id="join-btn">
               가입하기
@@ -248,4 +209,4 @@ const JoinPage = () => {
   );
 };
 
-export default JoinPage;
+export default MyInfoPage2;
