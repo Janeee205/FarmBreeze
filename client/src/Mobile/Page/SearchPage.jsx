@@ -85,11 +85,15 @@ function SearchPage() {
 
   const inputClassName = searchResults.length > 0 ? 'active' : '';
 
+  // 페이지를 뒤로 가는 함수
+  const goBack = () => {
+    window.history.back();
+  };
 
   return (
     <div className='search-wrap'>
       <div className='search-header'>
-        <div className='search-back'>
+        <div className='search-back' onClick={goBack}>
           <Icon icon="maki:arrow" color="#005792" hFlip={true} />
         </div>
         <Icon className='search-icon' icon="material-symbols:search" color="#5e9fc3" height='26px' />
