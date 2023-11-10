@@ -96,7 +96,7 @@ function SearchPage() {
         <div className='search-back' onClick={goBack}>
           <Icon icon="maki:arrow" color="#005792" hFlip={true} />
         </div>
-        <Icon className='search-icon' icon="material-symbols:search" color="#5e9fc3" height='26px' />
+        <Icon className='search-icon' icon="material-symbols:search" color="#5e9fc3" height='2rem' />
         <input
           type="text"
           value={searchQuery}
@@ -130,7 +130,7 @@ function SearchPage() {
           </ul>
           <div className='search-up'>
             <h2>급상승 검색어</h2>
-            <Icon className='search-up-icon' icon="mingcute:question-fill" color="#005792" height='20px' />
+            <Icon className='search-up-icon' icon="mingcute:question-fill" color="#005792" height='1.5rem' />
           </div>
           {/* <ul className='search-up'>
             {Array.from({ length: 5 }, (search, index) => (
@@ -152,10 +152,10 @@ function SearchPage() {
       )}
       {searchResults.length > 0 && (
         <div className='search-results'>
-          <Icon className='search-close' icon="octicon:x-12" color="#5e9fc3" height='20px' onClick={handleClearSearch} />
+          <Icon className='search-close' icon="octicon:x-12" color="#5e9fc3" height='2rem' onClick={handleClearSearch} />
           <Link to="/Cart">
             <span className='search-cart-count'>3</span>
-            <Icon className='search-cart' icon="ion:cart-outline" color="#005792" height='30px' />
+            <Icon className='search-cart' icon="ion:cart-outline" color="#005792" height='3rem' />
           </Link>
           <ul>
             {searchResults.map((result) => (
