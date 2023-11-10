@@ -140,3 +140,7 @@
   top: 2rem;
   right: 1rem;
 }
+
+.search-results ul {
+  display: flex;
+}

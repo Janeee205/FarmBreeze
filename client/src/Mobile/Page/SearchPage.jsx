@@ -4,8 +4,9 @@ import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 // import axios from 'axios';
 import './SearchPage.css';
-import TabBar from '../Component/TabBar.jsx';
+import ProductItem from '../Component/ProductItem.jsx';
 import Top from '../Component/Top.jsx';
+import TabBar from '../Component/TabBar.jsx';
 
 function SearchPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -160,7 +161,7 @@ function SearchPage() {
           </Link>
           <ul>
             {searchResults.map((result) => (
-              <li key={result.id}>{result.title}</li>
+              <ProductItem key={result.id} tittle={result.title} />
             ))}
           </ul>
         </div>
