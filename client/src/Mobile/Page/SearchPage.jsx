@@ -5,6 +5,7 @@ import { Icon } from '@iconify/react';
 import './SearchPage.css';
 import { Link } from 'react-router-dom';
 import TabBar from '../Component/TabBar.jsx';
+import Top from '../Component/Top.jsx';
 
 function SearchPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -37,6 +38,34 @@ function SearchPage() {
       setSearchResults([
         { id: 1, title: 'Search Result 1' },
         { id: 2, title: 'Search Result 2' },
+        { id: 3, title: 'Search Result 2' },
+        { id: 4, title: 'Search Result 2' },
+        { id: 5, title: 'Search Result 2' },
+        { id: 6, title: 'Search Result 2' },
+        { id: 7, title: 'Search Result 2' },
+        { id: 8, title: 'Search Result 2' },
+        { id: 9, title: 'Search Result 2' },
+        { id: 10, title: 'Search Result 2' },
+        { id: 11, title: 'Search Result 2' },
+        { id: 12, title: 'Search Result 2' },
+        { id: 13, title: 'Search Result 2' },
+        { id: 14, title: 'Search Result 2' },
+        { id: 15, title: 'Search Result 2' },
+        { id: 16, title: 'Search Result 2' },
+        { id: 17, title: 'Search Result 2' },
+        { id: 18, title: 'Search Result 2' },
+        { id: 19, title: 'Search Result 2' },
+        { id: 20, title: 'Search Result 2' },
+        { id: 21, title: 'Search Result 2' },
+        { id: 22, title: 'Search Result 2' },
+        { id: 23, title: 'Search Result 2' },
+        { id: 24, title: 'Search Result 2' },
+        { id: 25, title: 'Search Result 2' },
+        { id: 26, title: 'Search Result 2' },
+        { id: 27, title: 'Search Result 2' },
+        { id: 28, title: 'Search Result 2' },
+        { id: 29, title: 'Search Result 2' },
+        { id: 30, title: 'Search Result 2' },
         // 추가 데이터 추가 가능
       ]);
     } else {
@@ -152,7 +181,7 @@ function SearchPage() {
       )}
       {searchResults.length > 0 && (
         <div className='search-results'>
-          <Icon className='search-close' icon="octicon:x-12" color="#5e9fc3" height='2rem' onClick={handleClearSearch} />
+          <Icon className='search-close' icon="octicon:x-12" color="#5e9fc3" height='1.5rem' onClick={handleClearSearch} />
           <Link to="/Cart">
             <span className='search-cart-count'>3</span>
             <Icon className='search-cart' icon="ion:cart-outline" color="#005792" height='3rem' />
@@ -164,6 +193,7 @@ function SearchPage() {
           </ul>
         </div>
       )}
+    <Top/>
     <TabBar/>
     </div>
   );
