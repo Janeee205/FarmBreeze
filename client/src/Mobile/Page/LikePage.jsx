@@ -14,6 +14,9 @@ const LikePage = () => {
       <Link to="/Cart" style={{ position: 'absolute', right: '1rem', top: '2rem' }}>
         <Icon className='like-cart' icon="ion:cart-outline" color="#005792" height='2rem' />
       </Link>
+
+
+      
       <TabBar/>
     </div>
   );
