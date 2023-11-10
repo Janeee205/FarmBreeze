@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 // import axios from 'axios';
 import { Icon } from '@iconify/react';
 import './SearchPage.css';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import TabBar from '../Component/TabBar.jsx';
 
 function SearchPage() {
@@ -85,14 +85,18 @@ function SearchPage() {
 
   const inputClassName = searchResults.length > 0 ? 'active' : '';
 
+  // 페이지를 뒤로 가는 함수
+  const goBack = () => {
+    window.history.back();
+  };
 
   return (
     <div className='search-wrap'>
       <div className='search-header'>
-        <div className='search-back'>
+        <div className='search-back' onClick={goBack}>
           <Icon icon="maki:arrow" color="#005792" hFlip={true} />
         </div>
-        <Icon className='search-icon' icon="material-symbols:search" color="#5e9fc3" height='26px' />
+        <Icon className='search-icon' icon="material-symbols:search" color="#5e9fc3" height='2rem' />
         <input
           type="text"
           value={searchQuery}
@@ -126,7 +130,7 @@ function SearchPage() {
           </ul>
           <div className='search-up'>
             <h2>급상승 검색어</h2>
-            <Icon className='search-up-icon' icon="mingcute:question-fill" color="#005792" height='20px' />
+            <Icon className='search-up-icon' icon="mingcute:question-fill" color="#005792" height='1.5rem' />
           </div>
           {/* <ul className='search-up'>
             {Array.from({ length: 5 }, (search, index) => (
@@ -148,11 +152,11 @@ function SearchPage() {
       )}
       {searchResults.length > 0 && (
         <div className='search-results'>
-          <Icon className='search-close' icon="octicon:x-12" color="#5e9fc3" height='20px' onClick={handleClearSearch} />
-          <div className='search-cart-wrap'>
+          <Icon className='search-close' icon="octicon:x-12" color="#5e9fc3" height='2rem' onClick={handleClearSearch} />
+          <Link to="/Cart">
             <span className='search-cart-count'>3</span>
-            <Icon className='search-cart' icon="ion:cart-outline" color="#005792" height='30px' />
-          </div>
+            <Icon className='search-cart' icon="ion:cart-outline" color="#005792" height='3rem' />
+          </Link>
           <ul>
             {searchResults.map((result) => (
               <li key={result.id}>{result.title}</li>
