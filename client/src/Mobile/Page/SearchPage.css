@@ -119,7 +119,7 @@
 }
 .search-close {
   position: absolute;
-  top: 2.2rem;
+  top: 2.5rem;
   right: 6rem;
 }
 .search-cart-count {
@@ -139,4 +139,32 @@
   position: absolute;
   top: 2rem;
   right: 1rem;
+}
+
+
+.search-nav {
+  display: flex;
+  flex-direction: column;
+}
+.search-nav-row-1 {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 1.7rem;
+  color: #5e9fc3;
+  font-weight: 700;
+}
+.search-nav-row-2 {
+  display: flex;
+  justify-content: space-evenly;
+}
+.search-nav-row-2 span {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: 0.1rem solid #d0ecff;
+  border-radius: 2rem;
+}
+
+.search-results ul {
+  display: flex;
+  margin-top: 2rem;
 }
