@@ -1,29 +1,24 @@
-
-
 /* 카테고리 상단 */
 .category-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px;
+  height: 6rem;
+  border-bottom: 0.1rem solid #dadadaa4;
   font-size: large;
-  color: white;
-  background-color: #005792;
-  border-bottom-left-radius: 10px; /* 왼쪽 하단 둥근 테두리 반지름을 조정하세요 */
-  border-bottom-right-radius: 10px; /* 오른쪽 하단 둥근 테두리 반지름을 조정하세요 */
 }
 
 /* 카테고리 목록 */
 .category-list {
-  font-size: 13px;
+  font-size: 1.3rem;
 }
 .category-list ul {
   position: relative;
-  margin: 20px;
+  margin: 2rem;
 }
 .category-list li {
-  padding: 10px 0;
-  border-bottom: 1px solid #dadadaa4;
+  padding: 1rem 0;
+  border-bottom: 0.1rem solid #dadadaa4;
 }
 
 .cate-arrow {
