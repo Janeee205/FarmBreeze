@@ -92,6 +92,95 @@ function SearchPage() {
     window.history.back();
   };
 
+  
+  // 정렬 방식에 대한 상태
+  const [sortType, setSortType] = useState('');
+  const [activeSort, setActiveSort] = useState(null);
+
+  // 검색 결과 네비게이션 항목
+  const navigationItems = [
+    '총 개수',
+    '추천순',
+    '카테고리',
+    '브랜드',
+    '가격',
+    '혜택',
+    '유형',
+  ];
+
+  // 네비게이션 항목 클릭 시 정렬 수행
+  const handleNavigationClick = (item, index) => {
+    // 클릭된 항목에 따라 정렬 방식을 설정
+    setSortType(item);
+    // 화살표
+    handleSortClick(index);
+    // 정렬 로직을 수행할 함수 호출
+    performSorting(item);
+  };
+
+  // 정렬 로직을 수행할 함수
+const performSorting = (sortType) => {
+  const sortedResults = [...searchResults].filter(result => result.category);
+
+  switch (sortType) {
+    case '총 개수':
+      // 여기에 총 개수에 대한 정렬 로직을 추가합니다.
+      sortedResults.sort((a, b) => {
+        return /* 총 개수에 대한 비교 로직 */;
+      });
+      break;
+    case '추천순':
+      // 여기에 추천순에 대한 정렬 로직을 추가합니다.
+      sortedResults.sort((a, b) => {
+        return /* 추천순에 대한 비교 로직 */;
+      });
+      break;
+    case '카테고리':
+      // 여기에 카테고리에 대한 정렬 로직을 추가합니다.
+      sortedResults.sort((a, b) => {
+        return a.category.localeCompare(b.category);
+      });
+      break;
+    case '브랜드':
+      // 여기에 브랜드에 대한 정렬 로직을 추가합니다.
+      sortedResults.sort((a, b) => {
+        return a.brand.localeCompare(b.brand);
+      });
+      break;
+    case '가격':
+      // 여기에 가격에 대한 정렬 로직을 추가합니다.
+      sortedResults.sort((a, b) => {
+        return a.price - b.price;
+      });
+      break;
+    case '혜택':
+      // 여기에 혜택에 대한 정렬 로직을 추가합니다.
+      sortedResults.sort((a, b) => {
+        return /* 혜택에 대한 비교 로직 */;
+      });
+      break;
+    case '유형':
+      // 여기에 유형에 대한 정렬 로직을 추가합니다.
+      sortedResults.sort((a, b) => {
+        return /* 유형에 대한 비교 로직 */;
+      });
+      break;
+    default:
+      break;
+  }
+
+  setSearchResults(sortedResults);
+};
+
+
+  const handleSortClick = (index) => {
+    if (activeSort === index) {
+      setActiveSort(null);
+    } else {
+      setActiveSort(index);
+    }
+  };
+
   return (
     <div className='search-wrap'>
       <div className='search-header'>
@@ -159,6 +248,39 @@ function SearchPage() {
             <span className='search-cart-count'>3</span>
             <Icon className='search-cart' icon="ion:cart-outline" color="#005792" height='3rem' />
           </Link>
+          <div className='search-nav'>
+            {/* 첫 번째 줄 */}
+            <div className='search-nav-row-1'>
+              {navigationItems.slice(0, 2).map((item, index) => (
+                <span key={item} onClick={() => handleNavigationClick(item, index)}>
+                  {item}
+                  {item === '추천순' && (
+                    <> 
+                    {activeSort === index ? (
+                      <Icon className='search-sort-arrow' icon="ri:arrow-up-s-line" color="#005792" />
+                    ) : (
+                      <Icon className='search-sort-arrow' icon="ri:arrow-up-s-line" color="#005792" vFlip={true} />
+                    )}
+                    </>
+                  )}
+                </span>
+              ))}
+            </div>
+            {/* 두 번째 줄 */}
+            <div className='search-nav-row-2'>
+              {navigationItems.slice(2).map((item, index) => (
+                <span key={item} onClick={() => handleNavigationClick(item, index)}>
+                  {item}
+                  {activeSort === index ? ( 
+                    <Icon className='search-sort-arrow' icon="ri:arrow-up-s-line" color="#005792" />
+                    ) : (
+                    <Icon className='search-sort-arrow' icon="ri:arrow-up-s-line" color="#005792" vFlip={true} />
+                    )
+                  }
+                </span>
+              ))}
+            </div>
+          </div>
           <ul>
             {searchResults.map((result) => (
               <ProductItem key={result.id} tittle={result.title} />
