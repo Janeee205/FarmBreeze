@@ -1,4 +1,4 @@
-.join-wrapper {
+focus.join-wrapper {
   min-height: 100vh;
 }
 
@@ -80,7 +80,7 @@
 
 .join-wrapper .veri-chk-btn {
   color: #a1a1a1;
-  border: 1px solid var(--main-color);
+  border: 1px solid #5e9fc3;
 }
 
 .join-wrapper .phonenum-wrap {
@@ -133,16 +133,19 @@
   width: calc(100% / 3);
   height: 3.4rem;
   border-radius: 0.3rem;
-  border: 1px solid var(--main-color);
+  border: 1px solid #5e9fc3;
   cursor: pointer;
 }
 
-.join-wrapper .gender .inputbox:checked {
-  background-color: var(--main-color);
+.join-wrapper .gender p {
+  font-size: 1.2rem;
+  color: #5e9fc3;
 }
 
-.join-wrapper .gender .inputbox p {
-  font-size: 1.2rem;
+/* 클릭시 */
+.join-wrapper .gender .btn-primary {
+  border: 1px solid var(--main-color);
+  background-color: var(--main-color);
 }
 
 .join-wrapper .gap {
@@ -150,10 +153,6 @@
   height: 1rem;
   margin-bottom: 1.5rem;
   background-color: #eeeeee;
-}
-
-.join-wrapper .btn-primary {
-  background-color: var(--main-color);
 }
 
 .join-wrapper .btn-primary p {

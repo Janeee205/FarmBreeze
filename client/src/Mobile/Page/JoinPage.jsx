@@ -1,13 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../Component/Header";
 import "./JoinPage.css";
 
 const JoinPage = () => {
-  return (
-    // 할 일 :
-    // 버튼 작업하기
-    // 스타일 바꾸기
+  const [selected, setSelected] = useState(false);
 
+  // 성별의 데이터정보를 배열로 저장
+  const genderInfo = [
+    {
+      value: 0,
+      id: "male",
+      title: "남자",
+    },
+    {
+      value: 1,
+      id: "female",
+      title: "여자",
+    },
+    {
+      value: 2,
+      id: "none",
+      title: "선택안함",
+    },
+  ];
+
+  // 성별의 div 클릭시 onClick으로 class추가
+  const addClassHandler = (item) => {
+    setSelected(item.value);
+  };
+
+  return (
     <>
       <div className="join-wrapper">
         <Header title="회원가입" />
@@ -177,30 +199,31 @@ const JoinPage = () => {
             <div className="join-box-item join-gender">
               <p className="label-name">성별</p>
               <label htmlFor="gender" className="gender">
-                <div className="inputbox btn-primary">
-                  <p>남자</p>
-                  <input
-                    type="radio"
-                    name="gender"
-                    value="0"
-                    id="male"
-                    defaultChecked
-                  />
-                </div>
-                <div className="inputbox">
-                  <p>여자</p>
-                  <input type="radio" name="gender" value="1" id="female" />
-                </div>
-                <div className="inputbox">
-                  <p>선택안함</p>
-                  <input type="radio" name="gender" value="2" id="no-gender" />
-                </div>
+                {genderInfo.map((item) => (
+                  <div
+                    className={
+                      item.value === selected
+                        ? "inputbox btn-primary"
+                        : "inputbox"
+                    }
+                    onClick={() => addClassHandler(item)}
+                  >
+                    <p>{item.title}</p>
+                    <input
+                      type="radio"
+                      name="gender"
+                      value={item.value}
+                      id={item.id}
+                      defaultChecked
+                    />
+                  </div>
+                ))}
               </label>
             </div>
           </section>
 
           <div className="gap"></div>
-
+          {/* 이용약관동의 부분 */}
           <section className="terms-form">
             <p className="label-name">
               이용약관동의<span className="marking">*</span>

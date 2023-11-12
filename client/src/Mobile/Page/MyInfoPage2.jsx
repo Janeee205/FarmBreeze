@@ -1,9 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../Component/Header";
 import "./MyInfoPage2.css";
 import { Icon } from "@iconify/react";
 
 const MyInfoPage2 = () => {
+  const [selected, setSelected] = useState(false);
+
+  const genderInfo = [
+    {
+      value: 0,
+      id: "male",
+      title: "남자",
+    },
+    {
+      value: 1,
+      id: "female",
+      title: "여자",
+    },
+    {
+      value: 2,
+      id: "none",
+      title: "선택안함",
+    },
+  ];
+
+  const addClassHandler = (item) => {
+    setSelected(item.value);
+  };
   // 비밀번호 입력후 나오는 내정보관리 페이지
 
   return (
@@ -151,24 +174,25 @@ const MyInfoPage2 = () => {
             <div className="join-box-item join-gender">
               <p className="label-name">성별</p>
               <label htmlFor="gender" className="gender">
-                <div className="inputbox btn-primary">
-                  <p>남자</p>
-                  <input
-                    type="radio"
-                    name="gender"
-                    value="0"
-                    id="male"
-                    defaultChecked
-                  />
-                </div>
-                <div className="inputbox">
-                  <p>여자</p>
-                  <input type="radio" name="gender" value="1" id="female" />
-                </div>
-                <div className="inputbox">
-                  <p>선택안함</p>
-                  <input type="radio" name="gender" value="2" id="no-gender" />
-                </div>
+                {genderInfo.map((item) => (
+                  <div
+                    className={
+                      item.value === selected
+                        ? "inputbox btn-primary"
+                        : "inputbox"
+                    }
+                    onClick={() => addClassHandler(item)}
+                  >
+                    <p>{item.title}</p>
+                    <input
+                      type="radio"
+                      name="gender"
+                      value={item.value}
+                      id={item.id}
+                      defaultChecked
+                    />
+                  </div>
+                ))}
               </label>
             </div>
           </section>
