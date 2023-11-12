@@ -26,12 +26,17 @@
   font-size: 1.2rem;
   padding-left: 1rem;
   border-radius: 0.3rem;
-  border: 1px solid var(--main-color);
+  border: 1px solid #5e9fc3;
 }
 
 .myinfopage2-wrapper input:focus {
-  /* outline: 2px solid #d50000; */
+  border: 1px solid var(--main-color);
   outline: none;
+}
+
+.myinfopage2-wrapper input:disabled {
+  background-color: #d3dce1;
+  border: none;
 }
 
 .myinfopage2-wrapper ::placeholder {
@@ -78,10 +83,9 @@
   display: block;
 }
 
-.myinfopage2-wrapper .veri-btn,
 .myinfopage2-wrapper .veri-chk-btn {
   color: #a1a1a1;
-  border: 1px solid var(--main-color);
+  border: 1px solid #5e9fc3;
 }
 
 .myinfopage2-wrapper .phonenum-wrap {
@@ -134,13 +138,18 @@
   width: calc(100% / 3);
   height: 3.4rem;
   border-radius: 0.3rem;
-  border: 1px solid var(--main-color);
+  border: 1px solid #5e9fc3;
   cursor: pointer;
 }
 
-.myinfopage2-wrapper .gender .inputbox p {
+.myinfopage2-wrapper .gender p {
   font-size: 1.2rem;
-  color: var(--main-color);
+  color: #5e9fc3;
+}
+
+.myinfopage2-wrapper .gender .btn-primary {
+  border: 1px solid var(--main-color);
+  background-color: var(--main-color);
 }
 
 .myinfopage2-wrapper .gap {
@@ -149,10 +158,16 @@
   margin-bottom: 1.5rem;
   background-color: #eeeeee;
 }
+
+.myinfopage2-wrapper .btn-primary p {
+  color: #fff;
+}
+
 /* 회원가입 폼 끝, 이용약관 동의 시작 */
 
 .myinfopage2-wrapper .terms-form label {
   margin: 0.5rem 0;
+  cursor: pointer;
 }
 
 .myinfopage2-wrapper .terms-form span {

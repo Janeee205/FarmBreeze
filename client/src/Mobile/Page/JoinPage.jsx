@@ -1,8 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../Component/Header";
 import "./JoinPage.css";
 
 const JoinPage = () => {
+  const [selected, setSelected] = useState(false);
+
+  // 성별의 데이터정보를 배열로 저장
+  const genderInfo = [
+    {
+      value: 0,
+      id: "male",
+      title: "남자",
+    },
+    {
+      value: 1,
+      id: "female",
+      title: "여자",
+    },
+    {
+      value: 2,
+      id: "none",
+      title: "선택안함",
+    },
+  ];
+
+  // 성별의 div 클릭시 onClick으로 class추가
+  const addClassHandler = (item) => {
+    setSelected(item.value);
+  };
+
   return (
     <>
       <div className="join-wrapper">
@@ -38,6 +64,7 @@ const JoinPage = () => {
                   type="password"
                   name="pw"
                   id="pw"
+                  autoComplete="off"
                   placeholder="비밀번호를 입력해 주세요."
                 />
               </label>
@@ -54,7 +81,8 @@ const JoinPage = () => {
                   type="password"
                   name="pw-chk"
                   id="pw-chk"
-                  placeholder="비밀번호를 입력해 주세요."
+                  autoComplete="off"
+                  placeholder="비밀번호를 다시 입력해 주세요."
                 />
               </label>
               <p className="warn"></p>
@@ -171,30 +199,31 @@ const JoinPage = () => {
             <div className="join-box-item join-gender">
               <p className="label-name">성별</p>
               <label htmlFor="gender" className="gender">
-                <div className="inputbox">
-                  <p>남자</p>
-                  <input
-                    type="radio"
-                    name="gender"
-                    id="male"
-                    value="0"
-                    checked
-                  />
-                </div>
-                <div className="inputbox">
-                  <p>여자</p>
-                  <input type="radio" name="gender" id="female" value="1" />
-                </div>
-                <div className="inputbox">
-                  <p>선택안함</p>
-                  <input type="radio" name="gender" id="no-gender" value="2" />
-                </div>
+                {genderInfo.map((item) => (
+                  <div
+                    className={
+                      item.value === selected
+                        ? "inputbox btn-primary"
+                        : "inputbox"
+                    }
+                    onClick={() => addClassHandler(item)}
+                  >
+                    <p>{item.title}</p>
+                    <input
+                      type="radio"
+                      name="gender"
+                      value={item.value}
+                      id={item.id}
+                      defaultChecked
+                    />
+                  </div>
+                ))}
               </label>
             </div>
           </section>
 
           <div className="gap"></div>
-
+          {/* 이용약관동의 부분 */}
           <section className="terms-form">
             <p className="label-name">
               이용약관동의<span className="marking">*</span>

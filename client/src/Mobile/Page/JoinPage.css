@@ -1,4 +1,4 @@
-.join-wrapper {
+focus.join-wrapper {
   min-height: 100vh;
 }
 
@@ -26,11 +26,11 @@
   font-size: 1.2rem;
   padding-left: 1rem;
   border-radius: 0.3rem;
-  border: 1px solid var(--main-color);
+  border: 1px solid #5e9fc3;
 }
 
 .join-wrapper input:focus {
-  /* outline: 2px solid #d50000; */
+  border: 1px solid var(--main-color);
   outline: none;
 }
 
@@ -80,7 +80,7 @@
 
 .join-wrapper .veri-chk-btn {
   color: #a1a1a1;
-  border: 1px solid var(--main-color);
+  border: 1px solid #5e9fc3;
 }
 
 .join-wrapper .phonenum-wrap {
@@ -133,13 +133,19 @@
   width: calc(100% / 3);
   height: 3.4rem;
   border-radius: 0.3rem;
-  border: 1px solid var(--main-color);
+  border: 1px solid #5e9fc3;
   cursor: pointer;
 }
 
-.join-wrapper .gender .inputbox p {
+.join-wrapper .gender p {
   font-size: 1.2rem;
-  color: var(--main-color);
+  color: #5e9fc3;
+}
+
+/* 클릭시 */
+.join-wrapper .gender .btn-primary {
+  border: 1px solid var(--main-color);
+  background-color: var(--main-color);
 }
 
 .join-wrapper .gap {
@@ -148,6 +154,11 @@
   margin-bottom: 1.5rem;
   background-color: #eeeeee;
 }
+
+.join-wrapper .btn-primary p {
+  color: #fff;
+}
+
 /* 회원가입 폼 끝, 이용약관 동의 시작 */
 
 .terms-form label {
@@ -191,6 +202,7 @@
 .terms-form label {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .total-agree-item .agree-text {
