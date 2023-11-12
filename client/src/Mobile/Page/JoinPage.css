@@ -52,7 +52,7 @@ focus.join-wrapper {
 
 .join-wrapper label {
   display: flex;
-  margin: 0.3rem 0 2.2rem;
+  margin: 0.3rem 0 2.6rem;
 }
 
 .join-box-item {
@@ -63,7 +63,7 @@ focus.join-wrapper {
 .join-box-item .warn {
   position: absolute;
   color: red;
-  bottom: -1.5rem;
+  bottom: -1.6rem;
 }
 
 .join-wrapper .chk-btn,
