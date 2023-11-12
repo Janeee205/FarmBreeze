@@ -201,6 +201,7 @@ const JoinPage = () => {
               <label htmlFor="gender" className="gender">
                 {genderInfo.map((item) => (
                   <div
+                    key={item.value}
                     className={
                       item.value === selected
                         ? "inputbox btn-primary"
