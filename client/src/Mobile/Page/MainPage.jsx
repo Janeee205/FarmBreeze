@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import Footer from '../Component/Footer';
 
 const MainPage = () => {
   const header = {
@@ -37,6 +38,8 @@ const MainPage = () => {
           </Link>
         </div>
       </header>
+      
+      <Footer/>
     </div>
   );
 };
