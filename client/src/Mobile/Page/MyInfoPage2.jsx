@@ -105,13 +105,7 @@ const MyInfoPage2 = () => {
                 이메일<span className="marking">*</span>
               </p>
               <label htmlFor="email">
-                <input
-                  type="text"
-                  name="email"
-                  id="email"
-                  placeholder="예: FarmBreeze@FB.com"
-                  disabled
-                />
+                <input type="text" name="email" id="email" disabled />
                 <button type="button" className="email-chk-btn chk-btn">
                   중복확인
                 </button>
