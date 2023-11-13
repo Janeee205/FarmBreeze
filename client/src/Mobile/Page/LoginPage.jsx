@@ -28,13 +28,13 @@ const LoginPage = () => {
             <input type="password"
             name='pw'
             id='pw'
-            placeholder='비밀번호 입력' />
+            placeholder='비밀번호 입력'/>
           </label>
           </div>
         </div>
         <button type='submit' id='login-btn'>로그인</button>
         </form>
-        <button>아이디/비밀번호 찾기</button>
+        <Link><p className='find'>아이디/비밀번호 찾기</p></Link>
         </div>
       <TabBar/>
     </>
