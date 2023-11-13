@@ -30,6 +30,10 @@ function SearchPage() {
     { id: 4, query: '초코우유' },
     { id: 5, query: '유정란' },
     { id: 6, query: '꿀고구마' },
+    { id: 7, query: '감자' },
+    { id: 8, query: '핫도그' },
+    { id: 9, query: '피자' },
+    { id: 10, query: '콜라' },
   ]);
 
   // 검색어 입력 시 검색 결과 가져오기
@@ -230,7 +234,7 @@ const performSorting = (sortType) => {
           </ul> */}
           <ul className='search-up-item'>
             {trendingSearches.length > 0 ? (
-              trendingSearches.slice(0, 5).map((search, index) => (
+              trendingSearches.slice(0, 10).map((search, index) => (
                 <li key={index}>
                   <span className='numbered-item'>{index + 1}</span>
                   {'　'}{search.query}</li>
