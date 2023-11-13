@@ -3,23 +3,33 @@ import { Icon } from '@iconify/react';
 import './ProductItem.css';
 
 const ProductItem = (props) => {
+  const product = [
+    {
+      title : '제목',
+      img : '이미지',
+      price : '가격',
+      discountRate : '할인율',
+      discountedPrices : '할인 가격',
+      reviewCount : '후기'
+    }
+  ]
   return (
     <div className='product-item'>
       <div className="img-box">
-        <img src={props.product.img} alt={props.product.title} />
+        <img src={product.img} alt={product.title} />
         <Icon icon="icon-park-outline:like" />
       </div>
       <div className="cart-btn-box">
         <Icon icon="tdesign:cart" />
         <p>담기</p>
       </div>
-      <p className="product-title">{props.product.title}</p>
-      <p className='price'>{props.product.price}</p>
+      <p className="product-title">{product.title}</p>
+      <p className='price'>{product.price}</p>
       <div className="discounted-prices">
-        <p>{props.product.discountRate}</p>
-        <p>{props.product.discountedPrices}</p>
+        <p>{product.discountRate}</p>
+        <p>{product.discountedPrices}</p>
       </div>
-      <p className='review-count'>후기 <span>{props.product.reviewCount}</span>개</p>
+      <p className='review-count'>후기 <span>{product.reviewCount}</span>개</p>
     </div>
   );
 };
