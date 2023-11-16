@@ -1,0 +1,19 @@
+.slick-slide div {
+  position: relative;
+}
+
+.slick-slide img {
+  width: 100%;
+  height: 22rem;
+  object-fit: cover;
+}
+
+.slick-slide p {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding : 0.2rem 0.8rem;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: rgba(0, 43, 72, 0.47);
+}
