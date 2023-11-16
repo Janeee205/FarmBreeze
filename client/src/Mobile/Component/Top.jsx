@@ -2,44 +2,54 @@ import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 
 const Top = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const topBtnStyle = {
+    scroll : {
+      position: 'fixed',
+      right: '5%',
+      bottom: '15%',
+      zIndex: '10'
+    },
+    button : {
+      width : '3rem',
+      height : '3rem',
+      padding : '0.5rem',
+      borderRadius : '50%',
+      backgroundColor : 'var(--main-color)'
+    },
+    icon : {
+      fontSize : '2rem',
+      color : '#fff'
+    }
+  }
 
-  // 스크롤 이벤트를 감지하여 화살표의 가시성을 조절합니다.
-  const handleScroll = () => {
-    const scrollY = window.scrollY || document.documentElement.scrollTop;
-    setIsVisible(scrollY > window.innerHeight / 2);
-  };
+  const [showButton, setShowButton] = useState(false);
 
-  // 화면이 로드될 때와 스크롤 이벤트 등록 시점에 이벤트 리스너를 추가합니다.
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  // 화살표를 클릭했을 때 페이지를 맨 위로 스크롤합니다.
   const scrollToTop = () => {
-    window.scrollTo({
+    window.scroll({
       top: 0,
       behavior: 'smooth',
     });
   };
+  useEffect(() => {
+    const handleShowButton = () => {
+      window.scrollY > 100 ? setShowButton(true) : setShowButton(false);
+    };
+
+    console.log(window.scrollY);
+    window.addEventListener('scroll', handleShowButton);
+    return () => {
+      window.removeEventListener('scroll', handleShowButton);
+    };
+  }, []);
 
   return (
-    <div
-      className='top'
-      style={{
-        position: 'fixed',
-        bottom: '1rem',
-        right: '1rem',
-        display: isVisible ? 'block' : 'none',
-        cursor: 'pointer',
-      }}
-      onClick={scrollToTop}
-    >
-      <Icon icon="emojione-monotone:up-arrow" color="#00385e" />
-    </div>
+    showButton && (
+      <div style={topBtnStyle.scroll}>
+        <button style={topBtnStyle.button} onClick={scrollToTop}>
+          <Icon style={topBtnStyle.icon} icon="tabler:arrow-up" />
+        </button>
+      </div>
+    )
   );
 };
 
