@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import MainSlide from '../Component/MainSlide';
 import Footer from '../Component/Footer';
 
 const MainPage = () => {
@@ -38,6 +39,8 @@ const MainPage = () => {
           </Link>
         </div>
       </header>
+
+      <MainSlide/>
       
       <Footer/>
     </div>
