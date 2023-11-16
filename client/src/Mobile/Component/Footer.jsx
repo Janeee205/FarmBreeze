@@ -3,6 +3,7 @@ import React from 'react';
 const Footer = () => {
   const footer = {
     footer : {
+      marginTop : '5rem',
       padding : '1rem',
       color : '#fff',
       backgroundColor : 'var(--main-color)',
