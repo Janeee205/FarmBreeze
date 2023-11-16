@@ -1,9 +1,16 @@
-import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import './TabBar.css';
 
 const TabBar = () => {
+  const location = useLocation();
+  const [changeColor, setChangeColor] = useState(location.pathname);
+
+  useEffect(() =>{
+    setChangeColor(location.pathname);
+  }, [ location ])
+
   const tabMenu = [
     {
       title : '카테고리',
@@ -32,12 +39,18 @@ const TabBar = () => {
     }
   ]
 
+  const getPathMach = (location) => {
+    return tabMenu.find((item) => item.to === location.pathname)
+  }
+
+  const pathMach = getPathMach(location);
+
   return (
     <div className='tab-bar'>
       {
         tabMenu.map((item, index) => {
           return(
-            <div className='tab-bar-item' key={index}>
+            <div className={item.to === location.pathname ? 'tab-bar-item is-active' : 'tab-bar-item'} key={index}>
               <Link to={item.to}>
                 <Icon icon={item.icon} />
               </Link>

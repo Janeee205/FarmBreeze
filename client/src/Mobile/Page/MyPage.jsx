@@ -90,7 +90,7 @@ const MyPage = () => {
       {
         customerService.map((item, index) => {
           return(
-            <Link className='customer-service'>
+            <Link to={item.to} className='customer-service'>
               <p>{item.title}</p>
               <Icon icon="iconamoon:arrow-right-2-light" style={{fontSize : '1.5rem'}}/>
             </Link>
