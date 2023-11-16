@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import MainSlide from '../Component/MainSlide';
 import Footer from '../Component/Footer';
+import Top from '../Component/Top';
+import TabBar from '../Component/TabBar';
 
 const MainPage = () => {
   const header = {
@@ -43,6 +45,9 @@ const MainPage = () => {
       <MainSlide/>
       
       <Footer/>
+
+      <Top/>
+      <TabBar/>
     </div>
   );
 };
