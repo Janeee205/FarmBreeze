@@ -85,8 +85,13 @@ function SearchPage() {
   };
 
   // 최근 검색어 전체 삭제 이벤트 핸들러
-  const handleClearRecentSearches = () => {
+  const handleClearRecentSearchesAll = () => {
     setRecentSearches([]); // 최근 검색어 목록을 빈 배열로 설정하여 삭제
+  };
+  const handleClearRecentSearches = (id) => {
+    // 선택된 최근 검색어 ID를 기준으로 검색어를 필터링합니다.
+    const updatedRecentSearches = recentSearches.filter(search => search.id !== id);
+    setRecentSearches(updatedRecentSearches);
   };
 
   const inputClassName = searchResults.length > 0 ? 'active' : '';
@@ -204,14 +209,17 @@ const performSorting = (sortType) => {
         <div className='search-box'>
           <div className='search-new'>
             <h2>최근 검색어</h2>
-            <span onClick={handleClearRecentSearches}>검색어 전체 삭제</span>
+            <span onClick={handleClearRecentSearchesAll}>검색어 전체 삭제</span>
           </div>
           <ul className='search-new-item'>
             {/* {recentSearches.map((search) => (
               <li key={search.id}>{search.query}</li>
             ))} */}
             {recentSearches.slice(0, 10).map((search) => (
-              <li key={search.id}>{search.query} X</li>
+              <li key={search.id}>
+                {search.query}
+                <span className="remove-search" onClick={() => handleClearRecentSearches(search.id)}> X</span>
+              </li>
             ))}
           </ul>
           <h2>추천 검색어</h2>
