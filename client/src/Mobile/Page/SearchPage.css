@@ -33,6 +33,7 @@
   color: #5e9fc3;
 }
 .search-wrap input[type="text"]::placeholder {
+  font-size: 1rem;
   color: #5e9fc3;
 }
 
@@ -56,6 +57,7 @@
   font-weight: 700;
   text-decoration: underline;
   color: #5e9fc3;
+  cursor: pointer;
 }
 .search-new-item {
   display: flex;
@@ -72,6 +74,9 @@
 }
 .search-new-item li:first-child {
   margin-left: 0;
+}
+.search-new-item li span {
+  cursor: pointer;
 }
 
 /* 추천 검색어 */
