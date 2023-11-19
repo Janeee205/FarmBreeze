@@ -14,7 +14,7 @@ const JoinPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  // const [birth, setBirth] = useState("");
+  const [birth, setBirth] = useState("");
 
   // 오류메세지 상태 저장 - 아이디, 비번, 비번확인, 이름, 이메일, 폰번호, 생년월일
   const [idMsg, setIdMsg] = useState("");
@@ -23,7 +23,7 @@ const JoinPage = () => {
   const [nameMsg, setNameMsg] = useState("");
   const [emailMsg, setEmailMsg] = useState("");
   const [phoneMsg, setPhoneMsg] = useState("");
-  // const [birthMsg, setBirthMsg] = useState("");
+  const [birthMsg, setBirthMsg] = useState("");
 
   // 유효성 검사
   const [isId, setIsId] = useState(false);
@@ -32,7 +32,7 @@ const JoinPage = () => {
   const [isPwConfirm, setIsPwConfirm] = useState(false);
   const [isEmail, setIsEmail] = useState(false);
   const [isPhone, setIsPhone] = useState(false);
-  // const [isBirth, setIsBirth] = useState(false);
+  const [isBirth, setIsBirth] = useState(false);
 
   /***************************************************/
   // 아이디
@@ -42,10 +42,19 @@ const JoinPage = () => {
     const idRegExp = /^[a-zA-z0-9]{4,12}$/;
 
     if (!idRegExp.test(currentId)) {
-      setIdMsg("4-12사이 대소문자 또는 숫자만 입력해 주세요.");
+      // setIdMsg("4-12사이 대소문자 또는 숫자만 입력해 주세요.");
+      setIdMsg(
+        <p className="warn" style={{ color: "red" }}>
+          4-12사이 대소문자 또는 숫자만 입력해 주세요.
+        </p>
+      );
       setIsId(false);
     } else {
-      setIdMsg("사용가능한 아이디 입니다.");
+      setIdMsg(
+        <p className="warn" style={{ color: "green" }}>
+          사용가능한 아이디 입니다.
+        </p>
+      );
       setIsId(true);
     }
   };
@@ -56,11 +65,19 @@ const JoinPage = () => {
     setPw(currentPw);
     const pwRegExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
     if (!pwRegExp.test(currentPw)) {
-      setPwMsg("숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요.");
+      setPwMsg(
+        <p className="warn" style={{ color: "red" }}>
+          숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요.
+        </p>
+      );
       setIsPw(false);
     } else {
-      setPwMsg("안전한 비밀번호 입니다.");
-      setIsPw(ture);
+      setPwMsg(
+        <p className="warn" style={{ color: "green" }}>
+          안전한 비밀번호입니다.
+        </p>
+      );
+      setIsPw(true);
     }
   };
 
@@ -68,11 +85,19 @@ const JoinPage = () => {
   const onChangePwConfirm = (e) => {
     const ChangePwConfirm = e.target.value;
     setPwchk(ChangePwConfirm);
-    if (pw !== currentPw) {
-      setPwchkMsg("비밀번호가 같지 않습니다.");
-      setIsPw(false);
+    if (pw !== ChangePwConfirm) {
+      setPwchkMsg(
+        <p className="warn" style={{ color: "red" }}>
+          비밀번호가 같지 않습니다.
+        </p>
+      );
+      setIsPwConfirm(false);
     } else {
-      setPwchkMsg("비밀번호가 일치합니다.");
+      setPwchkMsg(
+        <p className="warn" style={{ color: "green" }}>
+          비밀번호가 일치합니다.
+        </p>
+      );
       setIsPwConfirm(true);
     }
   };
@@ -83,10 +108,18 @@ const JoinPage = () => {
     setName(currentName);
     const nameRegExp = /^[가-힣]{2,5}$/;
     if (currentName.length < 2 || currentName.length > 5) {
-      setNameMsg("이름은 2글자 이상 5글자 이하로 입력해주세요.");
+      setNameMsg(
+        <p className="warn" style={{ color: "red" }}>
+          이름은 2글자 이상 5글자 이하로 입력해주세요.
+        </p>
+      );
       setIsName(false);
     } else {
-      setNameMsg("사용가능한 이름입니다.");
+      setNameMsg(
+        <p className="warn" style={{ color: "green" }}>
+          사용가능한 이름입니다.
+        </p>
+      );
       setIsName(true);
     }
   };
@@ -99,34 +132,71 @@ const JoinPage = () => {
       /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
 
     if (!emailRegExp.test(currentEmail)) {
-      setEmailMsg("이메일의 형식이 올바르지 않습니다.");
+      setEmailMsg(
+        <p className="warn" style={{ color: "red" }}>
+          이메일의 형식이 올바르지 않습니다.
+        </p>
+      );
       setIsEmail(false);
     } else {
-      setEmailMsg("사용 가능한 이메일 입니다.");
+      setEmailMsg(
+        <p className="warn" style={{ color: "green" }}>
+          사용 가능한 이메일 입니다.
+        </p>
+      );
       setIsEmail(true);
     }
   };
 
   //휴대폰번호
-  const onChangePhone = (e) => {
-    const currentPhone = e.target.value;
+  const onChangePhone = (getNumber) => {
+    const currentPhone = getNumber;
     setPhone(currentPhone);
     const phoneRegExp = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
 
-    if (!setPhone.test(currentPhone)) {
-      ("올바른 형식이 아닙니다.");
+    if (!phoneRegExp.test(currentPhone)) {
+      setPhoneMsg(
+        <p className="warn" style={{ color: "red" }}>
+          올바른 형식이 아닙니다.
+        </p>
+      );
       setIsPhone(false);
     } else {
-      setPhoneMsg("사용가능한 번호입니다.");
-      setPhone(true);
+      setPhoneMsg(
+        <p className="warn" style={{ color: "green" }}>
+          사용가능한 번호입니다.
+        </p>
+      );
+      setIsPhone(true);
     }
   };
 
-  // const onChangeBirth = (e) => {
-  //   const currentBirth = e.target.value;
-  //   setBirth(currentBirth);
-  //   if()
-  // };
+  const addHyphen = (e) => {
+    const currentNumber = e.target.value;
+    setPhone(currentNumber);
+    if (currentNumber.length === 3 || currentNumber.length === 8) {
+      setPhone(currentNumber + "-");
+      onChangePhone(currentNumber + "-");
+    } else {
+      onChangePhone(currentNumber);
+    }
+  };
+
+  const onChangeBirth = (e) => {
+    const currentBirth = e.target.value;
+    setBirth(currentBirth);
+    if (!setBirth.test(currentBirth)) {
+      setBirthMsg(
+        <p className="warn" style={{ color: "red" }}>
+          태어난 년도 4자리를 정확하게 입력해주세요.
+        </p>
+      );
+      setIsBirth(false);
+    } else {
+      setBirthMsg(<p className="warn" style={{ color: "red" }}></p>);
+      setIsBirth(true);
+    }
+  };
 
   /***************************************************/
   // 성별을 배열에 저장
@@ -176,7 +246,7 @@ const JoinPage = () => {
                   중복확인
                 </button>
               </label>
-              <p className="warn">{idMsg}</p>
+              {idMsg}
             </div>
 
             {/* 비밀번호 */}
@@ -192,9 +262,10 @@ const JoinPage = () => {
                   autoComplete="off"
                   placeholder="비밀번호를 입력해 주세요."
                   value={pw}
+                  onChange={onChangePw}
                 />
               </label>
-              <p className="warn">{pwMsg}</p>
+              {pwMsg}
             </div>
 
             {/* 비밀번호 확인 */}
@@ -210,9 +281,10 @@ const JoinPage = () => {
                   autoComplete="off"
                   placeholder="비밀번호를 다시 입력해 주세요."
                   value={pwchk}
+                  onChange={onChangePwConfirm}
                 />
               </label>
-              <p className="warn">{pwchkMsg}</p>
+              {pwchkMsg}
             </div>
 
             {/* 이름 */}
@@ -227,9 +299,10 @@ const JoinPage = () => {
                   id="name"
                   placeholder="이름을 입력해 주세요."
                   value={name}
+                  onChange={onChangeName}
                 />
               </label>
-              <p className="warn">{nameMsg}</p>
+              {nameMsg}
             </div>
 
             {/* 이메일 */}
@@ -244,12 +317,13 @@ const JoinPage = () => {
                   id="email"
                   placeholder="예: FarmBreeze@FB.com"
                   value={email}
+                  onChange={onChangeEmail}
                 />
                 <button type="button" className="email-chk-btn chk-btn">
                   중복확인
                 </button>
               </label>
-              <p className="warn">{emailMsg}</p>
+              {emailMsg}
             </div>
 
             {/* 휴대폰 */}
@@ -265,11 +339,12 @@ const JoinPage = () => {
                     id="phonenum"
                     placeholder="숫자만 입력해 주세요."
                     value={phone}
+                    onChange={addHyphen}
                   />
                   <button type="button" className="veri-btn">
                     인증번호 받기
                   </button>
-                  <p className="warn">{phoneMsg}</p>
+                  {phoneMsg}
                 </div>
 
                 {/* 인증번호 받기 누른뒤 보이기 */}

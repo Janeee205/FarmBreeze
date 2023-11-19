@@ -62,7 +62,6 @@ focus.join-wrapper {
 /* 잘못 입력할시 경고문 */
 .join-box-item .warn {
   position: absolute;
-  color: red;
   bottom: -1.6rem;
 }
 

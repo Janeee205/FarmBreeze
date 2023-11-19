@@ -61,7 +61,7 @@ const MyInfoPage2 = () => {
       setIsPw(false);
     } else {
       setPwMsg("안전한 비밀번호 입니다.");
-      setIsPw(ture);
+      setIsPw(true);
     }
   };
 
@@ -69,7 +69,7 @@ const MyInfoPage2 = () => {
   const onChangePwConfirm = (e) => {
     const ChangePwConfirm = e.target.value;
     setPwchk(ChangePwConfirm);
-    if (pw !== currentPw) {
+    if (pw !== ChangePwConfirm) {
       setPwchkMsg("비밀번호가 같지 않습니다.");
       setIsPw(false);
     } else {
@@ -115,7 +115,7 @@ const MyInfoPage2 = () => {
     const phoneRegExp = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
 
     if (!setPhone.test(currentPhone)) {
-      ("올바른 형식이 아닙니다.");
+      setPhoneMsg("올바른 형식이 아닙니다.");
       setIsPhone(false);
     } else {
       setPhoneMsg("사용가능한 번호입니다.");
