@@ -15,7 +15,7 @@ const MyInfoPage2 = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [birth, setBirth] = useState("");
+  // const [birth, setBirth] = useState("");
 
   // 오류메세지 상태 저장 - 아이디, 비번, 비번확인, 이름, 이메일, 폰번호, 생년월일
   const [idMsg, setIdMsg] = useState("");
@@ -24,7 +24,7 @@ const MyInfoPage2 = () => {
   const [nameMsg, setNameMsg] = useState("");
   const [emailMsg, setEmailMsg] = useState("");
   const [phoneMsg, setPhoneMsg] = useState("");
-  const [birthMsg, setBirthMsg] = useState("");
+  // const [birthMsg, setBirthMsg] = useState("");
 
   // 유효성 검사
   const [isId, setIsId] = useState(false);
@@ -33,7 +33,7 @@ const MyInfoPage2 = () => {
   const [isPwConfirm, setIsPwConfirm] = useState(false);
   const [isEmail, setIsEmail] = useState(false);
   const [isPhone, setIsPhone] = useState(false);
-  const [isBirth, setIsBirth] = useState(false);
+  // const [isBirth, setIsBirth] = useState(false);
 
   /***************************************************/
   // 아이디
@@ -108,7 +108,25 @@ const MyInfoPage2 = () => {
     }
   };
 
-  //
+  //휴대폰번호
+  const onChangePhone = (e) => {
+    const currentPhone = e.target.value;
+    setPhone(currentPhone);
+    const phoneRegExp = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+
+    if (!setPhone.test(currentPhone)) {
+      ("올바른 형식이 아닙니다.");
+      setIsPhone(false);
+    } else {
+      setPhoneMsg("사용가능한 번호입니다.");
+      setPhone(true);
+    }
+  };
+
+  // const onChangeBirth = (e) => {
+  //   const currentBirth = e.target.value;
+  //   setBirth;
+  // };
 
   /***************************************************/
   // 성별을 배열에 저장
