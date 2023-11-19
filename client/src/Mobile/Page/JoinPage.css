@@ -20,7 +20,8 @@ focus.join-wrapper {
   color: var(--main-color);
 }
 
-.join-form input {
+.join-form input:not(#address),
+.join-wrapper .address-wrap {
   flex-grow: 1;
   height: 3.4rem;
   font-size: 1.2rem;
@@ -39,14 +40,13 @@ focus.join-wrapper {
   opacity: 1; /* Firefox */
 }
 
-.join-wrapper button {
+.join-wrapper button:not(.address-btn) {
   width: 8.5rem;
   height: 3.4rem;
   margin-left: 0.5rem;
   font-size: 1rem;
   font-weight: bold;
   border-radius: 0.3rem;
-  border: none;
   cursor: pointer;
 }
 
@@ -66,8 +66,7 @@ focus.join-wrapper {
 }
 
 .join-wrapper .chk-btn,
-.join-wrapper .veri-btn,
-.join-wrapper .address-btn {
+.join-wrapper .veri-btn {
   color: #fff;
   background-color: var(--main-color);
 }
@@ -93,13 +92,23 @@ focus.join-wrapper {
 }
 
 /* 주소 */
-
 .join-wrapper .address-wrap {
   display: flex;
+  justify-content: space-between;
+  margin: 0.3rem 0;
+}
+
+.address-btn {
+  width: 3rem;
+  color: var(--main-color);
+  cursor: pointer;
+  margin-right: 0.3rem;
 }
 
 .join-wrapper #address {
-  margin-bottom: 0.3rem;
+  border: none;
+  flex-grow: 1;
+  font-size: 1.2rem;
 }
 
 .join-wrapper .address > input {
