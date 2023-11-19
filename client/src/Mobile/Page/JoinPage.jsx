@@ -1,10 +1,50 @@
 import React, { useState } from "react";
+import KakaoMap from "./KakaoMap";
 import Header from "../Component/Header";
 import "./JoinPage.css";
+
+/**
+ * 해야되는거
+ *
+ * 아이디 중복검사(db연결필요)
+ * 휴대폰 인증번호 받기
+ *    번호 입력시 유효한 번호면 버튼 활성화
+ * 주소연결
+ * 생년월일 유효성검사
+ *
+ * https://velog.io/@dev__note/react-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%ED%8F%BC-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EA%B8%B0%EB%B3%B8-%EA%B5%AC%EC%A1%B0%EC%99%80-%EC%9C%A0%ED%9A%A8%EC%84%B1-%EA%B2%80%EC%82%AC-%EC%84%B8%ED%8C%85
+ *
+ * https://velog.io/@rayong/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%9C%A0%ED%9A%A8%EC%84%B1-%EA%B2%80%EC%82%AC
+ *
+ * https://choiiis.github.io/web/toy-project-sign-up-and-in-page-2/
+ */
 
 const JoinPage = () => {
   // 성별선택
   const [selected, setSelected] = useState(false);
+
+  // 성별을 배열에 저장
+  const genderInfo = [
+    {
+      value: 0,
+      id: "male",
+      title: "남자",
+    },
+    {
+      value: 1,
+      id: "female",
+      title: "여자",
+    },
+    {
+      value: 2,
+      id: "none",
+      title: "선택안함",
+    },
+  ];
+
+  const addClassHandler = (item) => {
+    setSelected(item.value);
+  };
 
   /***************************************************/
   // 정규식 초기값 세팅 - 아이디, 비번, 비번확인, 이름, 이메일, 폰번호, 생년월일
@@ -182,10 +222,10 @@ const JoinPage = () => {
     }
   };
 
-  const onChangeBirth = (e) => {
-    const currentBirth = e.target.value;
-    setBirth(currentBirth);
-    if (!setBirth.test(currentBirth)) {
+  const onChangeYear = (e) => {
+    const currentYear = e.target.value;
+    setBirth(currentYear);
+    if (!setBirth.test(currentYear)) {
       setBirthMsg(
         <p className="warn" style={{ color: "red" }}>
           태어난 년도 4자리를 정확하게 입력해주세요.
@@ -199,27 +239,22 @@ const JoinPage = () => {
   };
 
   /***************************************************/
-  // 성별을 배열에 저장
-  const genderInfo = [
-    {
-      value: 0,
-      id: "male",
-      title: "남자",
-    },
-    {
-      value: 1,
-      id: "female",
-      title: "여자",
-    },
-    {
-      value: 2,
-      id: "none",
-      title: "선택안함",
-    },
-  ];
+  // 카카오주소
+  const [enroll_company, setEnroll_company] = useState({
+    address: "",
+  });
 
-  const addClassHandler = (item) => {
-    setSelected(item.value);
+  const [popup, setPopup] = useState(false);
+
+  const handleInput = (e) => {
+    setEnroll_company({
+      ...enroll_company,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleComplete = (data) => {
+    setPopup(!popup);
   };
 
   return (
@@ -364,12 +399,26 @@ const JoinPage = () => {
                 주소<span className="marking">*</span>
               </p>
               <label htmlFor="address" className="address">
-                <input
-                  type="text"
-                  name="address"
-                  id="address"
-                  placeholder="도로명, 지번, 건물명 검색"
-                />
+                <div className="address-wrap">
+                  <input
+                    type="text"
+                    name="address"
+                    id="address"
+                    required={true}
+                    onChange={handleInput}
+                    value={enroll_company.address}
+                    placeholder="도로명, 지번, 건물명 검색"
+                  />
+                  <button onClick={handleComplete} className="address-btn">
+                    우편번호 찾기
+                  </button>
+                  {popup && (
+                    <KakaoMap
+                      company={enroll_company}
+                      setcompany={setEnroll_company}
+                    ></KakaoMap>
+                  )}
+                </div>
                 <input
                   type="text"
                   name="address-detail"
@@ -388,6 +437,8 @@ const JoinPage = () => {
                   name="birth"
                   id="year"
                   placeholder="년(YYYY)"
+                  value={birth}
+                  onChange={onChangeYear}
                 />
                 <input
                   type="text"
