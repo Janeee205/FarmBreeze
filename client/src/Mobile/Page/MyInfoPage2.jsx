@@ -4,8 +4,114 @@ import "./MyInfoPage2.css";
 import { Icon } from "@iconify/react";
 
 const MyInfoPage2 = () => {
+  // 성별선택
   const [selected, setSelected] = useState(false);
 
+  /***************************************************/
+  // 정규식 초기값 세팅 - 아이디, 비번, 비번확인, 이름, 이메일, 폰번호, 생년월일
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+  const [pwchk, setPwchk] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [birth, setBirth] = useState("");
+
+  // 오류메세지 상태 저장 - 아이디, 비번, 비번확인, 이름, 이메일, 폰번호, 생년월일
+  const [idMsg, setIdMsg] = useState("");
+  const [pwMsg, setPwMsg] = useState("");
+  const [pwchkMsg, setPwchkMsg] = useState("");
+  const [nameMsg, setNameMsg] = useState("");
+  const [emailMsg, setEmailMsg] = useState("");
+  const [phoneMsg, setPhoneMsg] = useState("");
+  const [birthMsg, setBirthMsg] = useState("");
+
+  // 유효성 검사
+  const [isId, setIsId] = useState(false);
+  const [isname, setIsName] = useState(false);
+  const [isPw, setIsPw] = useState(false);
+  const [isPwConfirm, setIsPwConfirm] = useState(false);
+  const [isEmail, setIsEmail] = useState(false);
+  const [isPhone, setIsPhone] = useState(false);
+  const [isBirth, setIsBirth] = useState(false);
+
+  /***************************************************/
+  // 아이디
+  const onChangeId = (e) => {
+    const currentId = e.target.value;
+    setId(currentId);
+    const idRegExp = /^[a-zA-z0-9]{4,12}$/;
+
+    if (!idRegExp.test(currentId)) {
+      setIdMsg("4-12사이 대소문자 또는 숫자만 입력해 주세요.");
+      setIsId(false);
+    } else {
+      setIdMsg("사용가능한 아이디 입니다.");
+      setIsId(true);
+    }
+  };
+
+  // 비밀번호
+  const onChangePw = (e) => {
+    const currentPw = e.target.value;
+    setPw(currentPw);
+    const pwRegExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+    if (!pwRegExp.test(currentPw)) {
+      setPwMsg("숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요.");
+      setIsPw(false);
+    } else {
+      setPwMsg("안전한 비밀번호 입니다.");
+      setIsPw(ture);
+    }
+  };
+
+  // 비밀번호확인
+  const onChangePwConfirm = (e) => {
+    const ChangePwConfirm = e.target.value;
+    setPwchk(ChangePwConfirm);
+    if (pw !== currentPw) {
+      setPwchkMsg("비밀번호가 같지 않습니다.");
+      setIsPw(false);
+    } else {
+      setPwchkMsg("비밀번호가 일치합니다.");
+      setIsPwConfirm(true);
+    }
+  };
+
+  // 이름
+  const onChangeName = (e) => {
+    const currentName = e.target.value;
+    setName(currentName);
+    const nameRegExp = /^[가-힣]{2,5}$/;
+    if (currentName.length < 2 || currentName.length > 5) {
+      setNameMsg("이름은 2글자 이상 5글자 이하로 입력해주세요.");
+      setIsName(false);
+    } else {
+      setNameMsg("사용가능한 이름입니다.");
+      setIsName(true);
+    }
+  };
+
+  // 이메일
+  const onChangeEmail = (e) => {
+    const currentEmail = e.target.value;
+    setEmail(currentEmail);
+    const emailRegExp =
+      /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
+
+    if (!emailRegExp.test(currentEmail)) {
+      setEmailMsg("이메일의 형식이 올바르지 않습니다.");
+      setIsEmail(false);
+    } else {
+      setEmailMsg("사용 가능한 이메일 입니다.");
+      setIsEmail(true);
+    }
+  };
+
+  //
+
+  /***************************************************/
+  // 성별을 배열에 저장
   const genderInfo = [
     {
       value: 0,
@@ -27,7 +133,6 @@ const MyInfoPage2 = () => {
   const addClassHandler = (item) => {
     setSelected(item.value);
   };
-  // 비밀번호 입력후 나오는 내정보관리 페이지
 
   return (
     <>
@@ -71,11 +176,11 @@ const MyInfoPage2 = () => {
               <p className="label-name">
                 비밀번호 확인<span className="marking">*</span>
               </p>
-              <label htmlFor="pw-chk">
+              <label htmlFor="pwchk">
                 <input
                   type="password"
-                  name="pw-chk"
-                  id="pw-chk"
+                  name="pwchk"
+                  id="pwchk"
                   autoComplete="off"
                   placeholder="비밀번호를 다시 입력해 주세요."
                 />
