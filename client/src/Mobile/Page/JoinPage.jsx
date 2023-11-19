@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Icon } from "@iconify/react";
 import KakaoMap from "./KakaoMap";
 import Header from "../Component/Header";
 import "./JoinPage.css";
@@ -6,11 +7,10 @@ import "./JoinPage.css";
 /**
  * 해야되는거
  *
- * 아이디 중복검사(db연결필요)
- * 휴대폰 인증번호 받기
- *    번호 입력시 유효한 번호면 버튼 활성화
- * 주소연결
+ * 중복확인버튼
+ * 인증번호 받기버튼
  * 생년월일 유효성검사
+ * 이용약관
  *
  * https://velog.io/@dev__note/react-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%ED%8F%BC-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EA%B8%B0%EB%B3%B8-%EA%B5%AC%EC%A1%B0%EC%99%80-%EC%9C%A0%ED%9A%A8%EC%84%B1-%EA%B2%80%EC%82%AC-%EC%84%B8%ED%8C%85
  *
@@ -66,13 +66,13 @@ const JoinPage = () => {
   const [birthMsg, setBirthMsg] = useState("");
 
   // 유효성 검사
-  const [isId, setIsId] = useState(false);
-  const [isname, setIsName] = useState(false);
-  const [isPw, setIsPw] = useState(false);
-  const [isPwConfirm, setIsPwConfirm] = useState(false);
-  const [isEmail, setIsEmail] = useState(false);
-  const [isPhone, setIsPhone] = useState(false);
-  const [isBirth, setIsBirth] = useState(false);
+  const [isId, setIsId] = useState(false); // eslint-disable-line no-unused-vars
+  const [isname, setIsName] = useState(false); // eslint-disable-line no-unused-vars
+  const [isPw, setIsPw] = useState(false); // eslint-disable-line no-unused-vars
+  const [isPwConfirm, setIsPwConfirm] = useState(false); // eslint-disable-line no-unused-vars
+  const [isEmail, setIsEmail] = useState(false); // eslint-disable-line no-unused-vars
+  const [isPhone, setIsPhone] = useState(false); // eslint-disable-line no-unused-vars
+  const [isBirth, setIsBirth] = useState(false); // eslint-disable-line no-unused-vars
 
   /***************************************************/
   // 아이디
@@ -82,7 +82,6 @@ const JoinPage = () => {
     const idRegExp = /^[a-zA-z0-9]{4,12}$/;
 
     if (!idRegExp.test(currentId)) {
-      // setIdMsg("4-12사이 대소문자 또는 숫자만 입력해 주세요.");
       setIdMsg(
         <p className="warn" style={{ color: "red" }}>
           4-12사이 대소문자 또는 숫자만 입력해 주세요.
@@ -147,10 +146,14 @@ const JoinPage = () => {
     const currentName = e.target.value;
     setName(currentName);
     const nameRegExp = /^[가-힣]{2,5}$/;
-    if (currentName.length < 2 || currentName.length > 5) {
+    if (
+      currentName.length < 2 ||
+      currentName.length > 5 ||
+      !nameRegExp.test(currentName)
+    ) {
       setNameMsg(
         <p className="warn" style={{ color: "red" }}>
-          이름은 2글자 이상 5글자 이하로 입력해주세요.
+          한글로 2~5글자 사이로 입력해주세요.
         </p>
       );
       setIsName(false);
@@ -211,6 +214,7 @@ const JoinPage = () => {
     }
   };
 
+  // 전화번호에 하이픈추가
   const addHyphen = (e) => {
     const currentNumber = e.target.value;
     setPhone(currentNumber);
@@ -222,6 +226,8 @@ const JoinPage = () => {
     }
   };
 
+  // 생년월일
+  // 수정필요!!!!!!!!!
   const onChangeYear = (e) => {
     const currentYear = e.target.value;
     setBirth(currentYear);
@@ -410,7 +416,7 @@ const JoinPage = () => {
                     placeholder="도로명, 지번, 건물명 검색"
                   />
                   <button onClick={handleComplete} className="address-btn">
-                    우편번호 찾기
+                    <Icon icon="ion:search" width="23" />
                   </button>
                   {popup && (
                     <KakaoMap
@@ -448,7 +454,7 @@ const JoinPage = () => {
                 />
                 <input type="text" name="birth" id="day" placeholder="일(DD)" />
               </label>
-              <p className="warn"></p>
+              {birthMsg}
             </div>
 
             {/* 성별 */}
