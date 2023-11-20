@@ -166,7 +166,7 @@ focus.join-wrapper {
   color: #5e9fc3;
 }
 
-/* 클릭시 */
+/* 성별선택시 */
 .join-wrapper .gender .btn-primary {
   border: 1px solid var(--main-color);
   background-color: var(--main-color);
