@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import KakaoMap from "./KakaoMap";
 import Header from "../Component/Header";
@@ -9,7 +9,6 @@ import "./JoinPage.css";
  *
  * 중복확인버튼
  * 인증번호 받기버튼
- * 생년월일 유효성검사
  * 이용약관
  *
  * https://velog.io/@dev__note/react-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%ED%8F%BC-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EA%B8%B0%EB%B3%B8-%EA%B5%AC%EC%A1%B0%EC%99%80-%EC%9C%A0%ED%9A%A8%EC%84%B1-%EA%B2%80%EC%82%AC-%EC%84%B8%ED%8C%85
@@ -54,7 +53,9 @@ const JoinPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [birth, setBirth] = useState("");
+  const [year, setYear] = useState("");
+  const [month, setMonth] = useState("");
+  const [day, setDay] = useState("");
 
   // 오류메세지 상태 저장 - 아이디, 비번, 비번확인, 이름, 이메일, 폰번호, 생년월일
   const [idMsg, setIdMsg] = useState("");
@@ -72,7 +73,13 @@ const JoinPage = () => {
   const [isPwConfirm, setIsPwConfirm] = useState(false); // eslint-disable-line no-unused-vars
   const [isEmail, setIsEmail] = useState(false); // eslint-disable-line no-unused-vars
   const [isPhone, setIsPhone] = useState(false); // eslint-disable-line no-unused-vars
-  const [isBirth, setIsBirth] = useState(false); // eslint-disable-line no-unused-vars
+
+  // 약관
+  const [allCheck, setAllCheck] = useState(false);
+  const [termsCheck, setTermsCheck] = useState(false);
+  const [ageCheck, setAgeCheck] = useState(false);
+  const [useCheck, setUseCheck] = useState(false);
+  const [marketingCheck, setMarketingCheck] = useState(false);
 
   /***************************************************/
   // 아이디
@@ -226,24 +233,118 @@ const JoinPage = () => {
     }
   };
 
-  // 생년월일
-  // 수정필요!!!!!!!!!
+  // *** 생년월일 ***
+  // 년도체크
   const onChangeYear = (e) => {
     const currentYear = e.target.value;
-    setBirth(currentYear);
-    if (!setBirth.test(currentYear)) {
+    // value값이 숫자가 아닐경우 빈문자열로 replace
+    const onlynumber = currentYear.replace(/[^0-9]/g, "");
+    setYear(onlynumber);
+    if (currentYear > 2023 || currentYear < 1900) {
       setBirthMsg(
         <p className="warn" style={{ color: "red" }}>
-          태어난 년도 4자리를 정확하게 입력해주세요.
+          년도를 정확히 입력해주세요.
         </p>
       );
-      setIsBirth(false);
     } else {
-      setBirthMsg(<p className="warn" style={{ color: "red" }}></p>);
-      setIsBirth(true);
+      setBirthMsg("");
     }
   };
 
+  // 월 체크
+  const onChangeMonth = (e) => {
+    const currentMonth = e.target.value;
+    const onlynumber = currentMonth.replace(/[^0-9]/g, "");
+    setMonth(onlynumber);
+    if (currentMonth < 1 || currentMonth > 12) {
+      setBirthMsg(
+        <p className="warn" style={{ color: "red" }}>
+          태어난 달을 정확히 입력하세요.
+        </p>
+      );
+    } else {
+      setBirthMsg("");
+    }
+  };
+
+  // 일 체크
+  const onChangeDay = (e) => {
+    const currentDay = e.target.value;
+    const onlynumber = currentDay.replace(/[^0-9]/g, "");
+    setDay(onlynumber);
+    if (currentDay < 1 || currentDay > 31) {
+      setBirthMsg(
+        <p className="warn" style={{ color: "red" }}>
+          태어난 날을 정확히 입력하세요.
+        </p>
+      );
+    } else {
+      setBirthMsg("");
+    }
+  };
+
+  // *** 약관동의 ***
+  // 전체동의
+  const allBtnEvent = () => {
+    if (allCheck === false) {
+      setAllCheck(true);
+      setTermsCheck(true);
+      setAgeCheck(true);
+      setUseCheck(true);
+      setMarketingCheck(true);
+    } else {
+      setAllCheck(false);
+      setTermsCheck(false);
+      setAgeCheck(false);
+      setUseCheck(false);
+      setMarketingCheck(false);
+    }
+  };
+
+  const termsBtnEvent = () => {
+    if (termsCheck === false) {
+      setTermsCheck(true);
+    } else {
+      setTermsCheck(false);
+    }
+  };
+
+  const ageBtnEvent = () => {
+    if (ageCheck === false) {
+      setAgeCheck(true);
+    } else {
+      setAgeCheck(false);
+    }
+  };
+
+  const useBtnEvent = () => {
+    if (useCheck === false) {
+      setUseCheck(true);
+    } else {
+      setUseCheck(false);
+    }
+  };
+
+  const marketingBtnEvent = () => {
+    if (marketingCheck === false) {
+      setMarketingCheck(true);
+    } else {
+      setMarketingCheck(false);
+    }
+  };
+
+  useEffect(() => {
+    if (
+      termsCheck === true &&
+      ageCheck === true &&
+      useCheck === true &&
+      marketingCheck === true
+    ) {
+      setAllCheck(true);
+    } else {
+      setAllCheck(false);
+    }
+  }, [termsCheck, ageCheck, useCheck, marketingCheck]);
   /***************************************************/
   // 카카오주소
   const [enroll_company, setEnroll_company] = useState({
@@ -443,16 +544,28 @@ const JoinPage = () => {
                   name="birth"
                   id="year"
                   placeholder="년(YYYY)"
-                  value={birth}
+                  value={year}
                   onChange={onChangeYear}
+                  maxLength={4}
                 />
                 <input
                   type="text"
                   name="birth"
                   id="month"
                   placeholder="월(MM)"
+                  value={month}
+                  onChange={onChangeMonth}
+                  maxLength={2}
                 />
-                <input type="text" name="birth" id="day" placeholder="일(DD)" />
+                <input
+                  type="text"
+                  name="birth"
+                  id="day"
+                  placeholder="일(DD)"
+                  value={day}
+                  onChange={onChangeDay}
+                  maxLength={2}
+                />
               </label>
               {birthMsg}
             </div>
@@ -494,7 +607,12 @@ const JoinPage = () => {
 
             <div className="total-agree">
               <label className="total-agree-item" htmlFor="total-agree-chkbox">
-                <input type="checkbox" id="total-agree-chkbox" />
+                <input
+                  type="checkbox"
+                  id="total-agree-chkbox"
+                  checked={allCheck}
+                  onChange={allBtnEvent}
+                />
                 <label htmlFor="total-agree-chkbox"></label>
                 <span className="agree-text">전체 동의합니다.</span>
               </label>
@@ -506,28 +624,50 @@ const JoinPage = () => {
 
             <div className="agree-list">
               <label className="agree-item">
-                <input type="checkbox" id="terms-chkbox1" />
+                <input
+                  type="checkbox"
+                  id="terms-chkbox1"
+                  checked={termsCheck}
+                  onChange={termsBtnEvent}
+                />
                 <label htmlFor="terms-chkbox1"></label>
                 <span className="agree-text">이용약관 동의</span>
                 <span className="text-primary">(필수)</span>
               </label>
               <label className="agree-item">
-                <input type="checkbox" id="terms-chkbox2" />
+                <input
+                  type="checkbox"
+                  id="terms-chkbox2"
+                  checked={ageCheck}
+                  onChange={ageBtnEvent}
+                />
                 <label htmlFor="terms-chkbox2"></label>
-                <span className="agree-text">개인정보 수집 ˑ 이용 동의</span>
-                <span className="text-primary">(필수)</span>
-              </label>
-              <label className="agree-item">
-                <input type="checkbox" id="terms-chkbox3" />
-                <label htmlFor="terms-chkbox3"></label>
-                <span className="agree-text">개인정보 수집 ˑ 이용 동의</span>
-                <span className="text-primary">(선택)</span>
-              </label>
-              <label className="agree-item">
-                <input type="checkbox" id="terms-chkbox4" />
-                <label htmlFor="terms-chkbox4"></label>
                 <span className="agree-text">본인은 만 14세 이상입니다.</span>
                 <span className="text-primary">(필수)</span>
+              </label>
+              <label className="agree-item">
+                <input
+                  type="checkbox"
+                  id="terms-chkbox3"
+                  checked={useCheck}
+                  onChange={useBtnEvent}
+                />
+                <label htmlFor="terms-chkbox3"></label>
+                <span className="agree-text">개인정보 수집 ˑ 이용 동의</span>
+                <span className="text-primary">(필수)</span>
+              </label>
+              <label className="agree-item">
+                <input
+                  type="checkbox"
+                  id="terms-chkbox4"
+                  checked={marketingCheck}
+                  onChange={marketingBtnEvent}
+                />
+                <label htmlFor="terms-chkbox4"></label>
+                <span className="agree-text">
+                  마케팅 및 이벤트 목적의 개인정보수집 동의
+                </span>
+                <span className="text-primary">(선택)</span>
               </label>
             </div>
             <button type="submit" id="join-btn">

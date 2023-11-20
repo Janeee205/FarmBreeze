@@ -187,6 +187,7 @@ focus.join-wrapper {
 
 .terms-form label {
   margin: 0.5rem 0;
+  width: fit-content;
 }
 
 .terms-form span {
