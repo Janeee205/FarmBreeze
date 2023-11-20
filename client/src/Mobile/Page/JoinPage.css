@@ -20,13 +20,15 @@ focus.join-wrapper {
   color: var(--main-color);
 }
 
-.join-form input {
+.join-form input:not(#address),
+.join-wrapper .address-wrap {
   flex-grow: 1;
   height: 3.4rem;
   font-size: 1.2rem;
   padding-left: 1rem;
   border-radius: 0.3rem;
   border: 1px solid #5e9fc3;
+  color: var(--main-color);
 }
 
 .join-wrapper input:focus {
@@ -39,20 +41,19 @@ focus.join-wrapper {
   opacity: 1; /* Firefox */
 }
 
-.join-wrapper button {
+.join-wrapper button:not(.address-btn) {
   width: 8.5rem;
   height: 3.4rem;
   margin-left: 0.5rem;
   font-size: 1rem;
   font-weight: bold;
   border-radius: 0.3rem;
-  border: none;
   cursor: pointer;
 }
 
 .join-wrapper label {
   display: flex;
-  margin: 0.3rem 0 2.2rem;
+  margin: 0.3rem 0 2.6rem;
 }
 
 .join-box-item {
@@ -62,8 +63,7 @@ focus.join-wrapper {
 /* 잘못 입력할시 경고문 */
 .join-box-item .warn {
   position: absolute;
-  color: red;
-  bottom: -1.5rem;
+  bottom: -1.6rem;
 }
 
 .join-wrapper .chk-btn,
@@ -93,12 +93,37 @@ focus.join-wrapper {
 }
 
 /* 주소 */
-.join-wrapper .address input {
-  width: 100%;
+.join-wrapper .address-wrap {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.3rem 0;
+}
+
+.address-btn {
+  width: 3rem;
+  color: var(--main-color);
+  cursor: pointer;
+  margin-right: 0.3rem;
 }
 
 .join-wrapper #address {
-  margin-bottom: 0.3rem;
+  border: none;
+  flex-grow: 1;
+  font-size: 1.2rem;
+}
+
+.join-wrapper .address > input {
+  width: 100%;
+}
+
+/* 주소창 */
+.postmodal {
+  background: rgba(0, 0, 0, 0.25);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
 }
 
 /* 생년월일 */
@@ -142,7 +167,7 @@ focus.join-wrapper {
   color: #5e9fc3;
 }
 
-/* 클릭시 */
+/* 성별선택시 */
 .join-wrapper .gender .btn-primary {
   border: 1px solid var(--main-color);
   background-color: var(--main-color);
@@ -163,6 +188,7 @@ focus.join-wrapper {
 
 .terms-form label {
   margin: 0.5rem 0;
+  width: fit-content;
 }
 
 .terms-form span {

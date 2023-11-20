@@ -27,6 +27,7 @@
   padding-left: 1rem;
   border-radius: 0.3rem;
   border: 1px solid #5e9fc3;
+  color: var(--main-color);
 }
 
 .myinfopage2-wrapper input:focus {
@@ -57,7 +58,7 @@
 
 .myinfopage2-wrapper label {
   display: flex;
-  margin: 0.3rem 0 2.2rem;
+  margin: 0.3rem 0 2.6rem;
 }
 
 .myinfopage2-wrapper .join-box-item {
@@ -68,7 +69,7 @@
 .join-box-item .warn {
   position: absolute;
   color: red;
-  bottom: -1.5rem;
+  bottom: -1.6rem;
 }
 
 .myinfopage2-wrapper .chk-btn,
@@ -228,8 +229,8 @@
 
 .withdraw {
   display: flex;
-  align-items: center;
-  color: #fff;
+  justify-content: right;
+  color: var(--main-color);
 }
 
 .withdraw .chevron {
