@@ -7,15 +7,8 @@ import "./JoinPage.css";
 /**
  * 해야되는거
  *
- * 중복확인버튼
- * 인증번호 받기버튼
- * 이용약관
+ * 인증번호 받기버튼 수정필요
  *
- * https://velog.io/@dev__note/react-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%ED%8F%BC-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EA%B8%B0%EB%B3%B8-%EA%B5%AC%EC%A1%B0%EC%99%80-%EC%9C%A0%ED%9A%A8%EC%84%B1-%EA%B2%80%EC%82%AC-%EC%84%B8%ED%8C%85
- *
- * https://velog.io/@rayong/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%9C%A0%ED%9A%A8%EC%84%B1-%EA%B2%80%EC%82%AC
- *
- * https://choiiis.github.io/web/toy-project-sign-up-and-in-page-2/
  */
 
 const JoinPage = () => {
@@ -64,6 +57,7 @@ const JoinPage = () => {
   const [nameMsg, setNameMsg] = useState("");
   const [emailMsg, setEmailMsg] = useState("");
   const [phoneMsg, setPhoneMsg] = useState("");
+  const [phonechk, setPhoneChk] = useState("");
   const [birthMsg, setBirthMsg] = useState("");
 
   // 유효성 검사
@@ -105,6 +99,13 @@ const JoinPage = () => {
     }
   };
 
+  // 아이디가 빈칸일때 중복확인 클릭시
+  const idBlankAlert = () => {
+    if (id.length === 0) {
+      alert("아이디를 입력해 주세요.");
+    }
+  };
+
   // 비밀번호
   const onChangePw = (e) => {
     const currentPw = e.target.value;
@@ -113,7 +114,7 @@ const JoinPage = () => {
     if (!pwRegExp.test(currentPw)) {
       setPwMsg(
         <p className="warn" style={{ color: "red" }}>
-          숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요.
+          숫자+영문자+특수문자 조합으로 8자리 이상 입력해 주세요.
         </p>
       );
       setIsPw(false);
@@ -138,13 +139,15 @@ const JoinPage = () => {
         </p>
       );
       setIsPwConfirm(false);
-    } else {
+    } else if (pw === ChangePwConfirm && ChangePwConfirm.length > 0) {
       setPwchkMsg(
         <p className="warn" style={{ color: "green" }}>
           비밀번호가 일치합니다.
         </p>
       );
       setIsPwConfirm(true);
+    } else {
+      setPwchkMsg("");
     }
   };
 
@@ -160,7 +163,7 @@ const JoinPage = () => {
     ) {
       setNameMsg(
         <p className="warn" style={{ color: "red" }}>
-          한글로 2~5글자 사이로 입력해주세요.
+          한글로 2~5글자 사이로 입력해 주세요.
         </p>
       );
       setIsName(false);
@@ -198,9 +201,16 @@ const JoinPage = () => {
     }
   };
 
+  // 이메일이 빈칸일때 중복확인 클릭시
+  const emailBlankAlert = () => {
+    if (email.length === 0) {
+      alert("이메일을 입력해 주세요.");
+    }
+  };
+
   //휴대폰번호
-  const onChangePhone = (getNumber) => {
-    const currentPhone = getNumber;
+  const onChangePhone = (e) => {
+    const currentPhone = e.target.value;
     setPhone(currentPhone);
     const phoneRegExp = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
 
@@ -221,15 +231,25 @@ const JoinPage = () => {
     }
   };
 
-  // 전화번호에 하이픈추가
-  const addHyphen = (e) => {
-    const currentNumber = e.target.value;
-    setPhone(currentNumber);
-    if (currentNumber.length === 3 || currentNumber.length === 8) {
-      setPhone(currentNumber + "-");
-      onChangePhone(currentNumber + "-");
+  const phoneBlankAlert = () => {
+    if (phone.length === 0) {
+      alert("휴대폰번호를 입력해 주세요.");
+      setPhoneChk("");
     } else {
-      onChangePhone(currentNumber);
+      setPhoneChk(
+        <div className="phonenum-veri">
+          <input type="text" name="phonenum-veri" id="phonenum-veri" />
+          <button type="button" className="veri-chk-btn">
+            인증번호 확인
+          </button>
+        </div>
+      );
+      setPhoneMsg(
+        <p className="warn" style={{ color: "#333333" }}>
+          인증번호가 오지 않는다면, 통신사 스팸차단 서비스 혹은 휴대 번호 차단
+          여부를 확인해 주세요.
+        </p>
+      );
     }
   };
 
@@ -243,7 +263,7 @@ const JoinPage = () => {
     if (currentYear > 2023 || currentYear < 1900) {
       setBirthMsg(
         <p className="warn" style={{ color: "red" }}>
-          년도를 정확히 입력해주세요.
+          년도를 정확히 입력해 주세요.
         </p>
       );
     } else {
@@ -345,7 +365,9 @@ const JoinPage = () => {
       setAllCheck(false);
     }
   }, [termsCheck, ageCheck, useCheck, marketingCheck]);
+
   /***************************************************/
+
   // 카카오주소
   const [enroll_company, setEnroll_company] = useState({
     address: "",
@@ -384,7 +406,11 @@ const JoinPage = () => {
                   value={id}
                   onChange={onChangeId}
                 />
-                <button type="button" className="id-chk-btn chk-btn">
+                <button
+                  type="button"
+                  className="id-chk-btn chk-btn"
+                  onClick={idBlankAlert}
+                >
                   중복확인
                 </button>
               </label>
@@ -461,7 +487,11 @@ const JoinPage = () => {
                   value={email}
                   onChange={onChangeEmail}
                 />
-                <button type="button" className="email-chk-btn chk-btn">
+                <button
+                  type="button"
+                  className="email-chk-btn chk-btn"
+                  onClick={emailBlankAlert}
+                >
                   중복확인
                 </button>
               </label>
@@ -481,23 +511,21 @@ const JoinPage = () => {
                     id="phonenum"
                     placeholder="숫자만 입력해 주세요."
                     value={phone}
-                    onChange={addHyphen}
+                    onChange={onChangePhone}
                   />
-                  <button type="button" className="veri-btn">
+                  <button
+                    type="button"
+                    className="veri-btn"
+                    onClick={phoneBlankAlert}
+                  >
                     인증번호 받기
                   </button>
                   {phoneMsg}
                 </div>
-
+                {phonechk}
                 {/* 인증번호 받기 누른뒤 보이기 */}
-                <div className="phonenum-veri">
-                  <input type="text" name="phonenum-veri" id="phonenum-veri" />
-                  <button type="button" className="veri-chk-btn">
-                    인증번호 확인
-                  </button>
-                </div>
               </label>
-              <p className="warn"></p>
+              {phoneMsg}
             </div>
 
             {/* 주소 */}

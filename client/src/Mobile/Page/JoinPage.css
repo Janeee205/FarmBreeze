@@ -28,6 +28,7 @@ focus.join-wrapper {
   padding-left: 1rem;
   border-radius: 0.3rem;
   border: 1px solid #5e9fc3;
+  color: var(--main-color);
 }
 
 .join-wrapper input:focus {
