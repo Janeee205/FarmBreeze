@@ -29,7 +29,12 @@ const KakaoMap = (props) => {
 
   return (
     <div>
-      <DaumPostcode className="postmodal" autoClose onComplete={complete} />
+      <DaumPostcode
+        className="postmodal"
+        autoClose
+        onComplete={complete}
+        style={{ width: "100%", height: "100vh" }}
+      />
     </div>
   );
 };
