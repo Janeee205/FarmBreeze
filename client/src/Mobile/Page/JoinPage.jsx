@@ -540,11 +540,14 @@ const JoinPage = () => {
                     name="address"
                     id="address"
                     required={true}
-                    onChange={handleInput}
+                    onChange={() => handleInput}
                     value={enroll_company.address}
                     placeholder="도로명, 지번, 건물명 검색"
                   />
-                  <button onClick={handleComplete} className="address-btn">
+                  <button
+                    onClick={() => handleComplete}
+                    className="address-btn"
+                  >
                     <Icon icon="ion:search" width="23" />
                   </button>
                   {popup && (
