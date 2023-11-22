@@ -2,17 +2,7 @@ import React from 'react';
 import { Icon } from '@iconify/react';
 import './ProductItem.css';
 
-const ProductItem = (props) => {
-  const product = [
-    {
-      title : '제목',
-      img : '이미지',
-      price : '가격',
-      discountRate : '할인율',
-      discountedPrices : '할인 가격',
-      reviewCount : '후기'
-    }
-  ]
+const ProductItem = ({product}) => {
   return (
     <div className='product-item'>
       <div className="img-box">
