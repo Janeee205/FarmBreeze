@@ -36,48 +36,28 @@ function SearchPage() {
     { id: 10, query: '콜라' },
   ]);
 
-  // 검색어 입력 시 검색 결과 가져오기
-  const handleSearch = () => {
-    if (searchQuery) {
-      // 여기에서 서버 요청을 보내는 대신 하드 코딩한 검색 결과 데이터를 사용할 수 있습니다.
-      setSearchResults([
-        { id: 1, title: 'Search Result 1' },
-        { id: 2, title: 'Search Result 2' },
-        // 추가 데이터 추가 가능
-      ]);
-    } else {
-      // 검색어가 없을 때 초기 데이터로 재설정
-      setSearchResults([]);
-    }
-  };
+// 서버에서 product 데이터를 가져와서 setSearchResults로 상태 업데이트
+const handleSearch = () => {
+  if (searchQuery) {
+    // 여기에서 서버 요청을 보내는 대신 백엔드 서버의 엔드포인트를 호출합니다.
+    // 프록시 설정으로 "/api/products"는 실제로 http://localhost:5000/api/products로 전달됩니다.
+    fetch('/api/products')
+      .then(response => response.json())
+      .then(data => setSearchResults(data))
+      .catch(error => console.error('Error fetching products:', error));
+  } else {
+    // 검색어가 없을 때 초기 데이터로 재설정
+    setSearchResults([]);
+  }
+};
 
-  // // 초기 데이터 로딩
-  // useEffect(() => {
-  //   // 서버에서 초기 데이터 가져오기 (예: 최근 검색어, 추천 검색어, 급상승 검색어)
-  //   // axios 또는 fetch를 사용하여 데이터를 가져올 수 있습니다.
-  //   axios.get('/api/initial-data').then((response) => {
-  //     setRecentSearches(response.data.recentSearches);
-  //     setRecommendedSearches(response.data.recommendedSearches);
-  //     setTrendingSearches(response.data.trendingSearches);
-  //   });
-  // }, []);
-
-  // 검색어 입력 시 검색 결과 가져오기
   useEffect(() => {
-    if (searchQuery) {
-      // 서버에서 검색 결과 가져오기
-      // axios.get(`/api/search?query=${searchQuery}`).then((response) => {
-      //   setSearchResults(response.data.results);
-      // });
-      setSearchResults([
-        { id: 1, title: 'Search Result 1' },
-        { id: 2, title: 'Search Result 2' },
-      ]);
-    } else {
-      // 검색어가 없을 때 초기 데이터로 재설정
-      setSearchResults([]);
-    }
-  }, [searchQuery]);
+    // 서버에서 product 데이터를 가져와서 setSearchResults로 상태 업데이트
+    fetch('/api/products')
+      .then(response => response.json())
+      .then(data => setSearchResults(data))
+      .catch(error => console.error('Error fetching products:', error));
+  }, []);
 
   // 검색어 삭제 이벤트 핸들러
   const handleClearSearch = () => {
@@ -294,8 +274,8 @@ const performSorting = (sortType) => {
             </div>
           </div>
           <ul>
-            {searchResults.map((result) => (
-              <ProductItem key={result.id} tittle={result.title} />
+            {searchResults.map(product => (
+              <ProductItem key={product._id} product={product} />
             ))}
           </ul>
         </div>
