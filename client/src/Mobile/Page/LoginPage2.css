@@ -1,0 +1,56 @@
+.LoginPage-wrapper {
+	margin: 0 auto;
+	text-align: center;
+	padding: 15px;
+}
+
+.logo {
+	margin: 100px 0;
+}
+
+.input-box {
+	width: 100%;
+	height: 34px;
+	margin: 10px auto;
+	text-align: left;
+	border: 1px solid #5E9FC3;
+	border-radius: 3px;
+	color: #5E9FC3;
+}
+
+input {
+	width: 100%;
+	height: 34px;
+	padding: 10px;
+	border: none;
+	background-color: transparent;
+	color: #005792;
+}
+
+input:focus {
+	border: 2px solid #005792 ;
+	border-radius: 3px;
+	outline: none;
+}
+
+input::placeholder {
+	font-size: 12px;
+	color: #5E9FC3;
+}
+
+#login-btn {
+	display: inline;
+	width: 100%;
+	height: 34px;
+	margin: 14px auto;
+	padding: 10px;
+	border-radius: 3px;
+	background-color: #005792;
+	color: #fff;
+	font-size: 12px;
+}
+
+.find {
+	font-size: 10px;
+	color: #005792
+}
