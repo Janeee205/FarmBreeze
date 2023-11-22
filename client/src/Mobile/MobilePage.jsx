@@ -26,7 +26,7 @@ const MobilePage = () => {
           <Route path="ProductDetails" element={<ProductDetailsPage />} />
           <Route path="Join" element={<JoinPage />} />
           <Route path="Login" element={<LoginPage />} />
-          < path="Login2" element={<LoginPage2/>} />
+          <Route path="Login2" element={<LoginPage2 />} />
           <Route path="Leave" element={<LeavePage />} />
           <Route path="Cart" element={<CartPage />} />
           <Route path="MyPage" element={<MyPage />} />
