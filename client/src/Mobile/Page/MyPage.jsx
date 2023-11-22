@@ -4,11 +4,12 @@ import { Icon } from '@iconify/react';
 import Header from '../Component/Header';
 import TabBar from '../Component/TabBar';
 import MyPageComponent from '../Component/MyPageComponent';
+import './MyPage.css';
 
 const MyPage = () => {
   const order = [
     {
-      title : '결재완료',
+      title : '결제완료',
       count : '0'
     },
     {
@@ -43,7 +44,7 @@ const MyPage = () => {
   return (
     <div>
       <Header title='마이페이지'/>
-      <div className="my-order-info">
+      <div className="my-order-info mypage-box">
         <h3>나의 주문정보</h3>
         <div className="order">
           {
@@ -58,45 +59,52 @@ const MyPage = () => {
           }
         </div>
         
-        <div className="order-check">
-
+        <div className="mypage-menu">
           <MyPageComponent title='주문/배송 조회'/>
           <MyPageComponent title='취소/반품/교환 조회'/>
         </div>
       </div>
 
-      <div className="my-shopping-benefits">
+      <div className="my-shopping-benefits mypage-box">
         <h3>나의 쇼핑혜택</h3>
-        <MyPageComponent title='쿠폰'/>
-        <MyPageComponent title='마일리지'/>
+        <div className="mypage-menu">
+          <MyPageComponent title='쿠폰'/>
+          <MyPageComponent title='마일리지'/>
+        </div>
       </div>
 
-      <div className="shopping-activities">
+      <div className="shopping-activities mypage-box">
         <h3>나의 쇼핑활동</h3>
-        <MyPageComponent title='나의 찜'/>
-        <MyPageComponent title='최근 본 상품'/>
-        <MyPageComponent title='상품리뷰'/>
-        <MyPageComponent title='상품문의'/>
-        <MyPageComponent title='1:1 문의내역'/>
+        <div className="mypage-menu">
+          <MyPageComponent title='나의 찜'/>
+          <MyPageComponent title='최근 본 상품'/>
+          <MyPageComponent title='상품리뷰'/>
+          <MyPageComponent title='상품문의'/>
+          <MyPageComponent title='1:1 문의내역'/>
+        </div>
       </div>
 
-      <div className="my-Profile">
-      <h3>나의 회원정보</h3>
-        <MyPageComponent title='회원 정보 관리'/>
-        <MyPageComponent title='배송 정보 관리'/>
-        <MyPageComponent title='공지사항'/>
+      <div className="my-Profile mypage-box">
+        <h3>나의 회원정보</h3>
+        <div className="mypage-menu">
+          <MyPageComponent title='회원 정보 관리'/>
+          <MyPageComponent title='배송 정보 관리'/>
+          <MyPageComponent title='공지사항'/>
+        </div>
       </div>
 
-      {
-        customerService.map((item, index) => {
-          return(
-            <Link to={item.to} className='customer-service'>
-              <p>{item.title}</p>
-              <Icon icon="iconamoon:arrow-right-2-light" style={{fontSize : '1.5rem'}}/>
-            </Link>
-          )
-        })
-      }
+      <div className="customer-service-box mypage-box">
+        {
+          customerService.map((item, index) => {
+            return(
+              <Link to={item.to} className='customer-service'>
+                <p>{item.title}</p>
+                <Icon icon="iconamoon:arrow-right-2-light" style={{fontSize : '1.5rem'}}/>
+              </Link>
+            )
+          })
+        }
+      </div>
       <TabBar/>
     </div>
   );

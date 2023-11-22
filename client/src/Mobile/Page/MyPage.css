@@ -1,0 +1,34 @@
+.mypage-box {
+  padding: 1.5rem;
+  border-top: 0.8rem solid #eee;
+}
+
+.mypage-box h3 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.mypage-box .order {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2rem;
+  border-radius: 0.3rem;
+  background-color: #E9F6FF;
+}
+
+.mypage-menu {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mypage-box .order div {
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.mypage-box .order div p:first-child {
+  font-size: 1.4rem;
+}

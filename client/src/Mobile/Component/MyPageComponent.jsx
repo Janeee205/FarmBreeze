@@ -9,7 +9,8 @@ const MyPageComponent = (props) => {
       justifyContent : 'space-between',
       alignItems : 'center',
       width : '12.5rem',
-      padding : '0.5rem 0',
+      marginRight : '2rem',
+      padding : '1rem 0 0.5rem 0',
       borderBottom : '0.1rem solid #D9D9D9'
     }
   }
