@@ -7,12 +7,13 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const { createProxyMiddleware } = require('http-proxy-middleware');
+const Product = require('./models/product');
 
 const app = express();
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
 // MongoDB 연결
 mongoose.connect('mongodb+srv://admin:qewr1324@cluster0.yb4lr5p.mongodb.net/?retryWrites=true&w=majority', {
@@ -35,6 +36,50 @@ db.once('open', () => {
   }).catch(err => {
     console.error('데이터 조회 오류:', err);
   });
+
+  const corsOptions = {
+    origin: 'http://localhost:3000', // 클라이언트의 주소로 변경
+    credentials: true, // 인증 정보 (쿠키 등)를 서버로 전송하기 위해 필요
+  };
+
+  app.use(cors(corsOptions));
+
+});
+
+// 프론트엔드 빌드 폴더 설정
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+// 클라이언트로의 요청을 프록시로 전달
+app.use('/api', createProxyMiddleware({
+  target: 'http://localhost:3000',
+  changeOrigin: true,
+  onProxyReq: (proxyReq, req, res) => {
+    // 필요한 헤더만 선택하여 전달
+    proxyReq.setHeader('Accept', 'application/json');
+    proxyReq.setHeader('Content-Type', 'application/json');
+    // 필요한 다른 헤더를 추가할 수 있음
+  },
+  onProxyRes: (proxyRes, req, res) => {
+    // 서버에서 클라이언트로 전송되는 헤더를 최소화
+    proxyRes.headers = minimizeHeaders(proxyRes.headers);
+  },
+}));
+
+function minimizeHeaders(headers) {
+  // 필요한 헤더만 선택하여 반환
+  const allowedHeaders = ['content-type', 'content-length', 'date'];
+  const minimizedHeaders = {};
+  for (const header of allowedHeaders) {
+    if (headers[header]) {
+      minimizedHeaders[header] = headers[header];
+    }
+  }
+  return minimizedHeaders;
+}
+
+// 모든 라우트가 여기까지 오면 index.html을 반환
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 // 라우트 설정
@@ -48,17 +93,6 @@ const userRoutes = require('./routes/userRoutes');
 app.use('/api/products', productRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/users', userRoutes);
-
-// 프론트엔드 빌드 폴더 설정
-app.use(express.static(path.join(__dirname, '../client/build')));
-
-// 모든 라우트가 여기까지 오면 index.html을 반환
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
-
-// 클라이언트로의 요청을 프록시로 전달
-app.use('/api', createProxyMiddleware({ target: 'http://localhost:3000', changeOrigin: true }));
 
 const port = process.env.PORT || 5000;
 

@@ -41,7 +41,12 @@ const handleSearch = () => {
   if (searchQuery) {
     // 여기에서 서버 요청을 보내는 대신 백엔드 서버의 엔드포인트를 호출합니다.
     // 프록시 설정으로 "/api/products"는 실제로 http://localhost:5000/api/products로 전달됩니다.
-    fetch('/api/products')
+    fetch('/api/products', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+      },
+    })
       .then(response => response.json())
       .then(data => setSearchResults(data))
       .catch(error => console.error('Error fetching products:', error));
