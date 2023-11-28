@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Review = require('../models/Review');
+const Review = require('../models/review');
 
 // 리뷰 목록을 가져오는 라우트
 router.get('/', async (req, res) => {

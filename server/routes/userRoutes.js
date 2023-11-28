@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User');
+const User = require('../models/user');
 
 // 사용자 목록을 가져오는 라우트
 router.get('/', async (req, res) => {
