@@ -16,29 +16,23 @@ const MainSlide = () => {
     fade: true,
     cssEase: 'liner'
   };
+
+  let slide = ['slide01', 'slide02', 'slide03', 'slide04', 'slide05'];
   
   return (
     <Slider {...settings}>
-      <div>
-        <img src="/images/slide01.png" alt="" />
-        <p>1/5</p>
-      </div>
-      <div>
-        <img src="/images/slide02.png" alt="" />
-        <p>2/5</p>
-      </div>
-      <div>
-        <img src="/images/slide03.png" alt="" />
-        <p>3/5</p>
-      </div>
-      <div>
-        <img src="/images/slide04.png" alt="" />
-        <p>4/5</p>
-      </div>
-      <div>
-        <img src="/images/slide05.png" alt="" />
-        <p>5/5</p>
-      </div>
+      {
+        slide.map((item, index) => {
+          index = index + 1;
+
+          return (
+            <div key={index}>
+              <img src={`/images/${item}.png`} alt={item}/>
+              <p>{`${index}/5`}</p>
+            </div>
+          )
+        })
+      }
     </Slider>
   );
 };
