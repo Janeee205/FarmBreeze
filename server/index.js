@@ -27,23 +27,47 @@ db.on('error', console.error.bind(console, 'MongoDB 연결 오류:'));
 db.once('open', () => {
   console.log('MongoDB 연결 성공!');
 
-  // 'users' 콜렉션에 접근
-  const User = mongoose.model('User', new mongoose.Schema({ name: String, email: String }), 'user');
+  // // 'users' 콜렉션에 접근
+  // const User = mongoose.model('User', new mongoose.Schema({ name: String, email: String }), 'user');
 
-  // 'users' 콜렉션에서 데이터 조회 (Promise를 사용)
-  User.find({}).then(users => {
-    console.log('조회된 사용자 데이터:', users);
+  // // 'users' 콜렉션에서 데이터 조회 (Promise를 사용)
+  // User.find({}).then(users => {
+  //   console.log('조회된 사용자 데이터:', users);
+  // }).catch(err => {
+  //   console.error('데이터 조회 오류:', err);
+  // });
+
+ // 'Product' 모델이 이미 정의되어 있는지 확인
+if (mongoose.models.Product) {
+  console.log('Product 모델이 이미 정의되어 있습니다.');
+} else {
+  console.log('Product 모델을 정의합니다.');
+
+  // 'Product' 모델 정의
+  const ProductSchema = new mongoose.Schema({
+    _id: Number,
+    상품명: String,
+    할인율: Number,
+    판매가격: String,
+  });
+
+  // 'Product' 모델 생성
+  const Product = mongoose.model('Product', ProductSchema, 'product');
+
+  // 'Product' 콜렉션에서 데이터 조회 (Promise를 사용)
+  Product.find({}).then(products => {
+    console.log('조회된 상품 데이터:', products);
   }).catch(err => {
     console.error('데이터 조회 오류:', err);
   });
+}
 
-  const corsOptions = {
-    origin: 'http://localhost:3000', // 클라이언트의 주소로 변경
-    credentials: true, // 인증 정보 (쿠키 등)를 서버로 전송하기 위해 필요
-  };
+  // const corsOptions = {
+  //   origin: 'http://localhost:3000', // 클라이언트의 주소로 변경
+  //   credentials: true, // 인증 정보 (쿠키 등)를 서버로 전송하기 위해 필요
+  // };
 
-  app.use(cors(corsOptions));
-
+  // app.use(cors(corsOptions));
 });
 
 // 프론트엔드 빌드 폴더 설정
