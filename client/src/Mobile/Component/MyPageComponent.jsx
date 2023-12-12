@@ -17,7 +17,7 @@ const MyPageComponent = (props) => {
   return (
     <Link to={props.to} style={component.link}>
       <p>{props.title}</p>
-      <Icon icon="iconamoon:arrow-right-2-light" style={{fontSize : '1.5rem'}}/>
+      <Icon icon="iconamoon:arrow-right-2-light" style={{fontSize : '1.5rem', color : '#999'}}/>
     </Link>
   );
 };
