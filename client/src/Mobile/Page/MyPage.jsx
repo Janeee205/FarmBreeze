@@ -44,6 +44,32 @@ const MyPage = () => {
   return (
     <div>
       <Header title='마이페이지'/>
+
+      <div className="mypage-not-logged-in">
+        <p>회원가입 하고<br/>다양한 혜택을 받아보세요!</p>
+        <button>로그인/회원가입</button>
+      </div>
+
+      <div className="mypage-logged-in">
+        <div className="mypage-info">
+          <div className='mypage-info-img'>
+            <img src="https://cdn-icons-png.flaticon.com/512/7101/7101338.png" alt="" />
+          </div>
+          <div>
+            <p className='user-name'>김주은님</p>
+            <p>이 달의 회원 등급 <span>새싹</span><Icon icon="iconamoon:arrow-right-2-light" style={{fontSize : '1rem'}}/></p>
+        </div>
+        </div>
+        <div className="reserves benefits">
+          <p>적립금</p>
+          <p><span>0P</span><Icon icon="iconamoon:arrow-right-2-light" style={{fontSize : '1.5rem', color : '#999'}}/></p>
+        </div>
+        <div className="coupon benefits">
+          <p>쿠폰</p>
+          <p><span>2장</span><Icon icon="iconamoon:arrow-right-2-light" style={{fontSize : '1.5rem', color : '#999'}}/></p>
+        </div>
+      </div>
+
       <div className="my-order-info mypage-box">
         <h3>나의 주문정보</h3>
         <div className="order">
