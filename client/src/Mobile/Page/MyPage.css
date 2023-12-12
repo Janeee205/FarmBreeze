@@ -1,3 +1,70 @@
+/* mypage 로그인 되어있지 않을 때 */
+.mypage-not-logged-in {
+  display: none;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.mypage-not-logged-in p {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
+
+.mypage-not-logged-in button {
+  font-size: 1rem;
+  color: #fff;
+  background-color: var(--main-color);
+}
+
+/* mypage 로그인 되어있을 때 */
+.mypage-logged-in {
+  padding: 1.5rem;
+}
+
+.mypage-logged-in .mypage-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.mypage-logged-in .mypage-info-img {
+  width: 3.2rem;
+  height: 3.2rem;
+  margin-right: 1rem;
+  border: 0.1rem solid var(--main-color);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.mypage-logged-in .mypage-info-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.mypage-logged-in .mypage-info .user-name,
+.mypage-logged-in .benefits span {
+  font-size: 1.2rem;
+}
+
+.mypage-logged-in .mypage-info div p,
+.mypage-logged-in .benefits p {
+  display: flex;
+  align-items: center;
+}
+
+.mypage-logged-in .mypage-info span {
+  margin-left: 0.5rem;
+  color: var(--main-color);
+}
+
+.mypage-logged-in .benefits {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* mypage 공통 스타일링(로그인 상관없이) */
 .mypage-box {
   padding: 1.5rem;
   border-top: 0.8rem solid #eee;
