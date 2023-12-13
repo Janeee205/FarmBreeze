@@ -1,8 +1,8 @@
 const express = require('express');
-const session = require('express-session');
+// const session = require('express-session');
 const mongoose = require('mongoose');
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
+// const passport = require('passport');
+// const LocalStrategy = require('passport-local').Strategy;
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -10,13 +10,13 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const Product = require('./models/product');
 
 const app = express();
-app.use(bodyParser.urlencoded({extended : true}));
-app.use(bodyParser.json());
 app.use(cors());
+app.use(bodyParser.json());
 app.use(express.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended : true, limit: '10mb' }));
 
 // MongoDB 연결
-mongoose.connect('mongodb+srv://admin:qewr1324@cluster0.yb4lr5p.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://admin:qewr1324@cluster0.yb4lr5p.mongodb.net/FarmBreeze', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -27,47 +27,20 @@ db.on('error', console.error.bind(console, 'MongoDB 연결 오류:'));
 db.once('open', () => {
   console.log('MongoDB 연결 성공!');
 
-  // // 'users' 콜렉션에 접근
-  // const User = mongoose.model('User', new mongoose.Schema({ name: String, email: String }), 'user');
-
-  // // 'users' 콜렉션에서 데이터 조회 (Promise를 사용)
-  // User.find({}).then(users => {
-  //   console.log('조회된 사용자 데이터:', users);
-  // }).catch(err => {
-  //   console.error('데이터 조회 오류:', err);
-  // });
-
- // 'Product' 모델이 이미 정의되어 있는지 확인
-if (mongoose.models.Product) {
-  console.log('Product 모델이 이미 정의되어 있습니다.');
-} else {
-  console.log('Product 모델을 정의합니다.');
-
-  // 'Product' 모델 정의
-  const ProductSchema = new mongoose.Schema({
-    _id: Number,
-    상품명: String,
-    할인율: Number,
-    판매가격: String,
-  });
-
-  // 'Product' 모델 생성
-  const Product = mongoose.model('Product', ProductSchema, 'product');
-
-  // 'Product' 콜렉션에서 데이터 조회 (Promise를 사용)
-  Product.find({}).then(products => {
-    console.log('조회된 상품 데이터:', products);
+    Product.find({}).then(products => {
+    if (products.length > 0) {
+      console.log('조회된 제품 데이터:', products);
+    } else {
+      console.log('데이터가 없습니다.');
+    }
   }).catch(err => {
     console.error('데이터 조회 오류:', err);
   });
-}
 
-  // const corsOptions = {
-  //   origin: 'http://localhost:3000', // 클라이언트의 주소로 변경
-  //   credentials: true, // 인증 정보 (쿠키 등)를 서버로 전송하기 위해 필요
-  // };
-
-  // app.use(cors(corsOptions));
+  const corsOptions = {
+    origin: 'http://localhost:3000', // 클라이언트의 주소로 변경
+    credentials: true, // 인증 정보 (쿠키 등)를 서버로 전송하기 위해 필요
+  };
 });
 
 // 프론트엔드 빌드 폴더 설정
@@ -125,82 +98,24 @@ app.listen(port, () => {
 });
 
 
-
-// Passport ------------------------------ 수정해야 함 ---- 아직 안 함
-passport.use(new LocalStrategy({
-  usernameField : 'userid',
-  passwordField : 'userpw',
-  session : true,
-  passReqToCallback : false
-}, function(userID, userPW, done){
-  User.findOne({ID : userID}, function(error, user){
-    if(error) return done(error);
-    
-    if(!user){
-      return done(null, false, {message : '존재하지 않는 아이디입니다.'})
-    }
-    if(userPW == user.PW){
-      return done(null, user)
-    }else{
-      return done(null, false, {message : '비밀번호가 일치하지 않습니다.'})
-    }
-  })
-}))
-
-passport.serializeUser(function(user, done){
-  done(null, user.ID)
-})
-
-passport.deserializeUser(function(id, done){
-  db.collection('user').findOne({ID : id}, function(error, result){
-    done(null, result)
-  })
-})
-
-// Passport 미들웨어 추가
-app.use(passport.initialize());
-app.use(passport.session());
-
-// 세션 ---------------------------------------------------------------------
-// 세션 시크릿 키 설정 (환경 변수로 설정하는 것이 안전)
-const sessionSecretKey = process.env.SESSION_SECRET_KEY || 'defaultSecretKeyFarmbree';
-
-router.use(session({
-  secret : sessionSecretKey, // 세션 암호화에 사용할 비밀 키 
-  resave : true, // 세션의 내용이 변경되지 않은 경우 다시 저장할 필요가 없음
-  saveUninitialized : true // 초기화되지 않은 세션도 저장
-}));
-
-
 // MongoDB 연결 이후
 app.get('/api/products', (req, res) => {
-  // 여기에서 MongoDB의 'product' 컬렉션에서 데이터를 가져와서 클라이언트에 전달
   Product.find({}, (err, products) => {
     if (err) {
-      console.error('Error retrieving products:', err);
-      res.status(500).send('Internal Server Error');
+      console.error('제품 검색 오류:', err);
+      res.status(500).send('내부 서버 오류');
     } else {
-      res.json(products);
+      if (products.length > 0) {
+        console.log('조회된 제품 데이터:', products);
+        res.json(products);
+      } else {
+        console.log('데이터가 없습니다.');
+        res.json({});
+        // res.status(404).json({ message: '데이터를 찾을 수 없습니다.' });
+      }
     }
   });
 });
-
-// 초기화 세팅 : 반드시 세션 설정 뒤로 순서 ------------------------------------
-router.use(passport.initialize());
-router.use(passport.session());
-
-// cookieParser -------------------------------- 필요한지 확인 후 삭제 or 유지
-// npm install cookie-parser --save  ★ 설치 ★ --------- 아직 설치 안 함 
-// const cookieParser = require('cookie-parser');
-// app.use(cookieParser());
-
-// app.get('/', function (requests, response) {
-//   // Cookies that have not been signed 서명되지 않은 쿠키
-//   console.log('Cookies: ', requests.cookies)
-
-//   // Cookies that have been signed 서명된 쿠키
-//   console.log('Signed Cookies: ', requests.signedCookies)
-// });
 
 
 // 검색 페이지 초기 데이터 가져오기 엔드포인트 
@@ -225,6 +140,69 @@ app.get('/api/search', (req, res) => {
 });
 
 
+// Passport ------------------------------ 수정해야 함 ---- 아직 안 함
+// passport.use(new LocalStrategy({
+//   usernameField : 'userid',
+//   passwordField : 'userpw',
+//   session : true,
+//   passReqToCallback : false
+// }, function(userID, userPW, done){
+//   User.findOne({ID : userID}, function(error, user){
+//     if(error) return done(error);
+    
+//     if(!user){
+//       return done(null, false, {message : '존재하지 않는 아이디입니다.'})
+//     }
+//     if(userPW == user.PW){
+//       return done(null, user)
+//     }else{
+//       return done(null, false, {message : '비밀번호가 일치하지 않습니다.'})
+//     }
+//   })
+// }))
+
+// passport.serializeUser(function(user, done){
+//   done(null, user.ID)
+// })
+
+// passport.deserializeUser(function(id, done){
+//   db.collection('user').findOne({ID : id}, function(error, result){
+//     done(null, result)
+//   })
+// })
+
+// // Passport 미들웨어 추가
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+// 세션 ---------------------------------------------------------------------
+// 세션 시크릿 키 설정 (환경 변수로 설정하는 것이 안전)
+// const sessionSecretKey = process.env.SESSION_SECRET_KEY || 'defaultSecretKeyFarmbree';
+
+// router.use(session({
+//   secret : sessionSecretKey, // 세션 암호화에 사용할 비밀 키 
+//   resave : true, // 세션의 내용이 변경되지 않은 경우 다시 저장할 필요가 없음
+//   saveUninitialized : true // 초기화되지 않은 세션도 저장
+// }));
+
+
+
+// 초기화 세팅 : 반드시 세션 설정 뒤로 순서 ------------------------------------
+// router.use(passport.initialize());
+// router.use(passport.session());
+
+// cookieParser -------------------------------- 필요한지 확인 후 삭제 or 유지
+// npm install cookie-parser --save  ★ 설치 ★ --------- 아직 설치 안 함 
+// const cookieParser = require('cookie-parser');
+// app.use(cookieParser());
+
+// app.get('/', function (requests, response) {
+//   // Cookies that have not been signed 서명되지 않은 쿠키
+//   console.log('Cookies: ', requests.cookies)
+
+//   // Cookies that have been signed 서명된 쿠키
+//   console.log('Signed Cookies: ', requests.signedCookies)
+// });
 
 
 
